@@ -25,7 +25,7 @@
 		
 		function conectar()
 		{	
-			$this->enlace = mysql_connect( $this->servidor, $this->usuario, $this->pass );
+			$this->enlace = mysql_connect( $this->servidor, $this->usuario);
 			if( !$this->enlace )
 			{	
 				die( "Error al conectar : " . mysql_error() );

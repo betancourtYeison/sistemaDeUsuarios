@@ -104,12 +104,12 @@
 				</div>
 			</div>					
 		</div>
-	</div>	
 		<div id = "footer">
 			<?php
 				include('../lib/footer.php');
 			?>	
-		</div>	
+		</div>
+	</div>			
 	</body>
 </html>
 

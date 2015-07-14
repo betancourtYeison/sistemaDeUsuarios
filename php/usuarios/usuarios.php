@@ -13,18 +13,17 @@
 	</head>	
 	
 	<body>	
-
 		<div class="container">
-		<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
-			<?php
-				include('../lib/barraUsuario.php');
-			?>
-		</div>		
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
-			<?php
-				include('../lib/menu.php');
-			?>	
-		</div>	
+			<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
+				<?php
+					include('../lib/barraUsuario.php');
+				?>
+			</div>		
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
+				<?php
+					include('../lib/menu.php');
+				?>	
+			</div>	
 			<div class="page-header" align = "center">
 				<image src='../../img/usuario.png'>
 				<h2>MODULO USUARIOS</h2>			
@@ -152,13 +151,12 @@
 				</form>	
 			  </div>
 			</div>
-			
-		</div>
-		<div id = "footer">
-			<?php
-				include('../lib/footer.php');
-			?>	
+			<div id = "footer">
+				<?php
+					include('../lib/footer.php');
+				?>	
 		</div>	
+		</div>
 	</div>
 	<body>	
 </html>
