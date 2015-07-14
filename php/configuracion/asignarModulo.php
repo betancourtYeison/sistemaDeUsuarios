@@ -9,13 +9,14 @@
 		<script src="../../js/jquery-1.8.2.js"></script>
 		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />			
 	</head>	
-	<body>		
-		<div id='cabecera'>
+	<body>
+	<div class="container">		
+		<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
 			<?php
 				include('../lib/barraUsuario.php');
 			?>
 		</div>		
-		<div id='menu'>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
 			<?php
 				include('../lib/menu.php');
 			?>	
@@ -103,8 +104,8 @@
 				</div>
 			</div>					
 		</div>
-				
-		<div id = "footer2">
+	</div>	
+		<div id = "footer">
 			<?php
 				include('../lib/footer.php');
 			?>	

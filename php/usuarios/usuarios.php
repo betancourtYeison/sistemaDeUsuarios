@@ -151,11 +151,6 @@
 					<button type="submit" class="btn btn-primary">CREAR USUARIO</button>
 				</form>	
 			  </div>
-			  
-			  <!--<div class="modal-footer">
-				<a href="#" class="btn">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
-			  </div>-->
 			</div>
 			
 		</div>

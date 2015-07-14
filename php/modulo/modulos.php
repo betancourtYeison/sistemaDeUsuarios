@@ -12,13 +12,14 @@
 		<link rel = "shortcut icon" type = "image/x-icon" href = "../../img/favicon.ico" />	
 	</head>	
 	
-	<body>		
-		<div id='cabecera'>
+	<body>	
+	<div class="container">	
+		<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
 			<?php
 				include('../lib/barraUsuario.php');
 			?>
 		</div>		
-		<div id='menu'>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
 			<?php
 				include('../lib/menu.php');
 			?>	
@@ -102,15 +103,10 @@
 					<button type="submit" class="btn btn-primary">CREAR MODULO</button>
 				</form>	
 			  </div>
-			  
-			  <!--<div class="modal-footer">
-				<a href="#" class="btn">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
-			  </div>-->
 			</div>
-			
-		</div>
-		<div id = "footer2">
+		</div>	
+	</div>
+		<div id = "footer">
 			<?php
 				include('../lib/footer.php');
 			?>	
