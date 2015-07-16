@@ -1,17 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.10
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 13-07-2015 a las 21:18:00
--- Versión del servidor: 5.5.38
--- Versión de PHP: 5.6.2
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-07-2015 a las 16:54:13
+-- Versión del servidor: 5.6.24
+-- Versión de PHP: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
--- Base de datos: `ojo`
+-- Base de datos: `sistemadeusuarios`
 --
 
 -- --------------------------------------------------------
@@ -20,8 +26,8 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `compra`
 --
 
-CREATE TABLE `compra` (
-`codigo_compra` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `compra` (
+  `codigo_compra` int(11) NOT NULL,
   `num_tarjeta_credito` int(11) DEFAULT NULL,
   `cc` int(11) DEFAULT NULL,
   `telefono` int(11) DEFAULT NULL,
@@ -32,32 +38,7 @@ CREATE TABLE `compra` (
   `barrio` varchar(40) DEFAULT NULL,
   `correo_electronico` varchar(120) DEFAULT NULL,
   `fecha` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `contenedores`
---
-
-CREATE TABLE `contenedores` (
-  `nombre_contenedor` varchar(30) NOT NULL DEFAULT '',
-  `color_letra` varchar(7) DEFAULT NULL,
-  `tamano_letra` int(2) DEFAULT NULL,
-  `tipo_letra` varchar(20) DEFAULT NULL,
-  `color_fondo` varchar(7) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `contenedores`
---
-
-INSERT INTO `contenedores` (`nombre_contenedor`, `color_letra`, `tamano_letra`, `tipo_letra`, `color_fondo`) VALUES
-('cabecera', '#999999', 36, 'inherit', '#000'),
-('cuerpo', '#000', 14, 'inherit', '#fff'),
-('menu', '#777777', 14, 'inherit', '#f2f2f2'),
-('pie', '#fff', 12, 'inherit', '#000'),
-('titulo', '#000', 70, 'inherit', '#fff');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -65,8 +46,8 @@ INSERT INTO `contenedores` (`nombre_contenedor`, `color_letra`, `tamano_letra`, 
 -- Estructura de tabla para la tabla `estado`
 --
 
-CREATE TABLE `estado` (
-`codigoestado` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `estado` (
+  `codigoestado` int(3) NOT NULL,
   `descripcion` varchar(30) NOT NULL,
   `tipo` int(3) NOT NULL COMMENT '1-estados usuarios, 2-estado de prestamos, 3-estados de recurso'
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
@@ -92,7 +73,7 @@ INSERT INTO `estado` (`codigoestado`, `descripcion`, `tipo`) VALUES
 -- Estructura de tabla para la tabla `modulo`
 --
 
-CREATE TABLE `modulo` (
+CREATE TABLE IF NOT EXISTS `modulo` (
   `codigomodulo` int(10) NOT NULL,
   `descripcion` varchar(40) NOT NULL,
   `ruta` varchar(40) NOT NULL,
@@ -105,13 +86,11 @@ CREATE TABLE `modulo` (
 
 INSERT INTO `modulo` (`codigomodulo`, `descripcion`, `ruta`, `tipo`) VALUES
 (1, 'USUARIOS', '../usuarios/usuarios.php', 1),
-(7, 'ASIGNAMODULOS', '../configuracion/asignarModulo.php', 2),
+(4, 'ASIGNAMODULOS', '../configuracion/asignarModulo.php', 2),
 (2, 'PERFIL', '../perfiles/perfiles.php', 3),
-(8, 'MODULOS', '../modulo/modulos.php', 1),
-(20, 'EDITAR MODULOS', '../Estilos/modificar.php', 1),
-(21, 'PRODUCTOS', '../productos/productos.php', 1),
-(22, 'COMPRAS', '../compras/compras.php', 1),
-(10, 'USUARIOS', '../usuarios/usuarios.php', 1);
+(3, 'MODULOS', '../modulo/modulos.php', 1),
+(5, 'PRODUCTOS', '../productos/productos.php', 1),
+(6, 'COMPRAS', '../compras/compras.php', 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +98,7 @@ INSERT INTO `modulo` (`codigomodulo`, `descripcion`, `ruta`, `tipo`) VALUES
 -- Estructura de tabla para la tabla `perfil`
 --
 
-CREATE TABLE `perfil` (
+CREATE TABLE IF NOT EXISTS `perfil` (
   `codigoperfil` int(2) NOT NULL,
   `descripcion` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -138,11 +117,11 @@ INSERT INTO `perfil` (`codigoperfil`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `perfilmodulo`
 --
 
-CREATE TABLE `perfilmodulo` (
-`codigo` int(2) NOT NULL,
+CREATE TABLE IF NOT EXISTS `perfilmodulo` (
+  `codigo` int(2) NOT NULL,
   `codigoperfil` int(2) NOT NULL,
   `codigomodulo` int(2) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfilmodulo`
@@ -156,13 +135,7 @@ INSERT INTO `perfilmodulo` (`codigo`, `codigoperfil`, `codigomodulo`) VALUES
 (7, 2, 3),
 (4, 1, 4),
 (8, 1, 5),
-(10, 1, 7),
-(11, 1, 8),
-(19, 2, 9),
-(18, 1, 10),
-(17, 1, 9),
-(20, 1, 22),
-(21, 1, 21);
+(22, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -170,7 +143,7 @@ INSERT INTO `perfilmodulo` (`codigo`, `codigoperfil`, `codigomodulo`) VALUES
 -- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `producto` (
+CREATE TABLE IF NOT EXISTS `producto` (
   `codigo` int(11) NOT NULL DEFAULT '0',
   `nombre` varchar(60) DEFAULT NULL,
   `cantidad_disponible` int(11) DEFAULT NULL,
@@ -179,7 +152,7 @@ CREATE TABLE `producto` (
   `descripcion` varchar(150) DEFAULT NULL,
   `categoria` varchar(40) DEFAULT NULL,
   `estado` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -196,11 +169,11 @@ INSERT INTO `producto` (`codigo`, `nombre`, `cantidad_disponible`, `precio`, `fo
 -- Estructura de tabla para la tabla `producto_compra`
 --
 
-CREATE TABLE `producto_compra` (
+CREATE TABLE IF NOT EXISTS `producto_compra` (
   `codigo_producto` int(11) NOT NULL DEFAULT '0',
   `codigo_compra` int(11) NOT NULL DEFAULT '0',
   `cantidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -208,7 +181,7 @@ CREATE TABLE `producto_compra` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE IF NOT EXISTS `usuario` (
   `cedula` varchar(30) NOT NULL,
   `nombre` varchar(40) NOT NULL,
   `apellido` varchar(40) NOT NULL,
@@ -225,9 +198,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`cedula`, `nombre`, `apellido`, `correo`, `telefono`, `codigoestado`, `pass`, `codigoperfil`, `deuda`) VALUES
-('1', 'Jorge', 'Castaño', 'jorge@jorge.copm', '31553535626', 1, '1', 1, 0),
-('3', 'Yeison', 'Bentancourt', 'yeison@yeison.com', '12345', 1, '3', 2, 0),
-('', '', '', '', '', 0, '', 0, 0);
+('1', 'Jorge', 'Castano', 'jorge@jorge.copm', '31553535626', 1, '1', 1, 0),
+('3', 'Yeison', 'Bentancourt', 'yeison@yeison.com', '12345', 1, '3', 2, 0);
 
 --
 -- Índices para tablas volcadas
@@ -237,55 +209,49 @@ INSERT INTO `usuario` (`cedula`, `nombre`, `apellido`, `correo`, `telefono`, `co
 -- Indices de la tabla `compra`
 --
 ALTER TABLE `compra`
- ADD PRIMARY KEY (`codigo_compra`);
-
---
--- Indices de la tabla `contenedores`
---
-ALTER TABLE `contenedores`
- ADD PRIMARY KEY (`nombre_contenedor`);
+  ADD PRIMARY KEY (`codigo_compra`);
 
 --
 -- Indices de la tabla `estado`
 --
 ALTER TABLE `estado`
- ADD PRIMARY KEY (`codigoestado`);
+  ADD PRIMARY KEY (`codigoestado`);
 
 --
 -- Indices de la tabla `modulo`
 --
 ALTER TABLE `modulo`
- ADD PRIMARY KEY (`codigomodulo`);
+  ADD PRIMARY KEY (`codigomodulo`);
 
 --
 -- Indices de la tabla `perfil`
 --
 ALTER TABLE `perfil`
- ADD PRIMARY KEY (`codigoperfil`);
+  ADD PRIMARY KEY (`codigoperfil`);
 
 --
 -- Indices de la tabla `perfilmodulo`
 --
 ALTER TABLE `perfilmodulo`
- ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`codigo`);
 
 --
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
- ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`codigo`);
 
 --
 -- Indices de la tabla `producto_compra`
 --
 ALTER TABLE `producto_compra`
- ADD PRIMARY KEY (`codigo_compra`,`codigo_producto`), ADD KEY `codigo_producto` (`codigo_producto`);
+  ADD PRIMARY KEY (`codigo_compra`,`codigo_producto`), ADD KEY `codigo_producto` (`codigo_producto`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`cedula`);
+  ADD PRIMARY KEY (`cedula`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -295,24 +261,17 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-MODIFY `codigo_compra` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo_compra` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-MODIFY `codigoestado` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `codigoestado` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `perfilmodulo`
 --
 ALTER TABLE `perfilmodulo`
-MODIFY `codigo` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `producto_compra`
---
-ALTER TABLE `producto_compra`
-ADD CONSTRAINT `producto_compra_ibfk_1` FOREIGN KEY (`codigo_producto`) REFERENCES `producto` (`codigo`),
-ADD CONSTRAINT `producto_compra_ibfk_2` FOREIGN KEY (`codigo_compra`) REFERENCES `compra` (`codigo_compra`);
+  MODIFY `codigo` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

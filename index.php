@@ -92,7 +92,7 @@
 				</form>
 			</div>							
 			
-			<div id = "footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class='row' align='center'>					
 					<h4>Sistema de usuarios</h4>
 					<h4>Powered By CreaArteWeb</h4>
