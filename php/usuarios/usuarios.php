@@ -4,7 +4,7 @@
 <html>	
 	<head>
 		<meta charset="UTF-8">
-		<title> - MODULO USUARIOS</title>	
+		<title> - MÓDULO USUARIOS</title>	
 		<link href = "../../css/bootstrap.css" rel = "stylesheet" type = "text/css" />			
 		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />
 		<link rel = "shortcut icon" type = "image/x-icon" href = "../../img/favicon.ico" />	
@@ -16,7 +16,7 @@
 	
 	<body>	
 		<div class="container">
-			<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
 				<?php
 					include('../lib/barraUsuario.php');
 				?>
@@ -28,38 +28,29 @@
 			</div>	
 			<div class="page-header" align = "center">
 				<image src='../../img/usuario.png'>
-				<h2>MODULO USUARIOS</h2>			
+				<h2>MÓDULO USUARIOS</h2>			
 			</div>
 	
-			<div class="row">
-				<div class="span1"></div>
-				<div class="span8">
-							<!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-							NUEVO
-						</button>
-						<a href = 'modificarUsuario.php'><button class="btn btn-primary" type="button">
-							MODIFICAR
-						</button></a>
-						<a href = 'eliminarUsuario.php'><button class="btn btn-primary" type="button">
-							ELIMINAR
-						</button></a>				
-				</div>			
+			<div align="center" class="class="col-lg-12 col-md-12 col-sm-12 col-xs-12"">				
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+					NUEVO
+				</button>				
 			</div>		
 			<br></br>
-			<div class="row">
-				<div class="span1">
-				</div>
-				<div class="span14">
-					<table align = "center" cellpadding = "10px" class = "table table-striped">				
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table align = "center" cellpadding = "10px" class = "table table-striped table-hover">				
 						<tr align = "center">						
-							<th>IDENTIFICACION</th> 					 
+							<th>IDENTIFICACIÓN</th> 					 
 							<th>NOMBRE</th> 
 							<th>APELLIDO</th> 
 							<th>CORREO</th> 
-							<th>TELEFONO</th> 
+							<th>TÉLEFONO</th> 
 							<th>ESTADO</th> 						
-							<th>PERFIL</th> 				
+							<th>PERFIL</th> 
+							<th style="width:20px;"> </th>
+        					<th style="width:20px;"> </th>				
 						</tr>						
 						<?php
 							$usuarios = $miUsuario -> consultarUsuarios();
@@ -74,7 +65,9 @@
 									<td>$usuario[3]</td>
 									<td>$usuario[4]</td>
 									<td>$usuario[5]</td>
-									<td>$usuario[6]</td>									
+									<td>$usuario[6]</td>							
+									<td><a href='modificarUsuario.php?cedula=$usuario[0]' class='btn btn-small btn-primary'>MODIFICAR</a></td>
+        							<td><a href='eliminar.php?cedula=$usuario[0]' class='btn btn-small btn-danger'>ELIMINAR</a></td>									
 								</tr>";
 							}	
 						?>				
@@ -92,67 +85,116 @@
 			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        		<h4 class="modal-title" id="myModalLabel">CREAR USUARIO</h4>
 			      		</div>
-			      		<form action = "insert.php" method = "post">
-			      			<div class="modal-body">					
-								<table cellpadding = "0px">
-									<tr>
-										<td>Numero de Identificaci�n:</td> <td><input type = "text" name = "cedula" /></td>
-									</tr>
-										<td>Nombre:</td> <td><input type = "text" name = "nombre" /></td>
-									</tr>
-									<tr>
-										<td>Apellido:</td> <td><input type = "text" name = "apellido" /></td>
-									</tr>
-									<tr>
-										<td>E-m@il:</td> <td><input type = "text" name = "correo" /></td>
-									</tr>
-									<tr>
-										<td>Telefono:</td> <td><input type = "text" name = "telefono" /></td>
-									</tr>
-									<tr>
-										<td>Estado:</td> 
-										<td>							
-											<select name='estado'>
+			      		<form class="form-horizontal" role="form" action="insert.php" method="post">
+			      			<div class="modal-body">
+	      				  	  	<div class="form-group">
+	      				  	    	<label for="username" class="col-sm-4 control-label">Identificación:</label>
+	      				  	    	<div class="col-sm-6">
+	      				  	      		<input type="text" class="form-control" id="username" 
+	      				  		      		name="cedula" placeholder="id"/>
+	      				  		    </div>
+	      				  	  	</div>
+
+      				  	  	  	<div class="form-group">
+      				  	  		    <label for="firstName" class="col-sm-4 control-label">Nombre:</label>
+      				  	  		    <div class="col-sm-6">
+      				  	  		      <input type="text" class="form-control" id="firstName"
+      				  	  		      		name="nombre" placeholder="nombre"/>
+      				  	  		    </div>
+      				  	  	  	</div>
+
+							  	<div class="form-group">
+								    <label for="lastName" class="col-sm-4 control-label">Apellido:</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control" id="lastName"
+								            name="apellido" placeholder="apellido"/>
+								    </div>
+							  	</div>
+
+							  	<div class="form-group">
+								    <label for="email" class="col-sm-4 control-label">Email:</label>
+								    <div class="col-sm-6">
+								      <input type="email" class="form-control" id="email"
+								            name="correo" placeholder="usuario@mail.com"/>
+							    	</div>
+							  	</div>
+
+							  	<div class="form-group">
+							    	<label for="phone" class="col-sm-4 control-label">Teléfono:</label>
+								    <div class="col-sm-6">				    
+								      <input type="text" class="form-control" id="phone"
+								            name="telefono" placeholder="telefono"/>
+								    </div>
+							  	</div>
+
+							  	<div class="form-group">
+							    	<label for="estado" class="col-sm-4 control-label">Estado:</label>
+								    <div class="col-sm-6">				    
+								      <select class="form-control" id="estado" name='estado'>
 												<?php
 													$miEstado = new Estado("","","");
 													$miEstado -> setConexion( $conexion );	
 													$estados = $miEstado -> consultarEstadoUsuario( );						
 													if( $estados )
-													foreach( $estados as $estado )
+													foreach( $estados as $estado2 )
 													{
-														echo"<option value='$estado[0]'>$estado[1]</option>";							
+														if( $estado == $estado2[0]  )
+														{
+															echo "<option value='$estado2[0]' selected>$estado2[1]</option>";	
+														}
+														else
+														{										
+															echo "<option value='$estado2[0]'>$estado2[1]</option>";	
+														}						
 													}								
 												?>
 											</select>
-										</td>
-									</tr>
-									<tr>
-										<td>contrase�a:</td> <td><input type = "password" name = "pass" /></td>
-									</tr>
-									<tr>
-										<td>Repetir contrase�a:</td> <td><input type = "password" name = "pass2" /></td>
-									</tr>
-									<tr>
-										<td>Perfil: </td> 
-										<td>
-											<select name='perfil'>
-												<?php
-													$miPerfil = new Perfil("","");
-													$miPerfil -> setConexion( $conexion );	
-													$perfiles = $miPerfil -> consultarPerfiles( );						
-													if( $perfiles )
-													foreach( $perfiles as $perfil )
+								    </div>
+							  	</div>
+
+							  	<div class="form-group">
+								    <label for="password" class="col-sm-4 control-label">Contraseña:</label>
+								    <div class="col-sm-6">
+								      	<input type="password" class="form-control" id="password"
+											name="pass" placeholder="****"/>
+								    </div>
+								</div>
+
+							  	<div class="form-group">
+								    <label for="re-password" class="col-sm-4 control-label">Repetir Contraseña:</label>
+								    <div class="col-sm-6">					    	
+								      	<input type="password" class="form-control" id="re-password"
+								            name="pass2" placeholder="****"/>
+								    </div>
+								</div>
+
+								<div class="form-group">
+							    	<label for="perfil" class="col-sm-4 control-label">Estado:</label>
+								    <div class="col-sm-6">				    
+								      	<select class="form-control" id="perfil" name='perfil'>
+											<?php
+												$miPerfil = new Perfil("","");
+												$miPerfil -> setConexion( $conexion );	
+												$perfiles = $miPerfil -> consultarPerfiles( );						
+												if( $perfiles )
+												foreach( $perfiles as $perfil2 )
+												{
+													if( $perfil == $perfil2[0] )
 													{
-														echo "<option value='$perfil[0]'>$perfil[1]</option>";							
-													}								
-												?>
-											</select>
-										</td>
-									</tr>
-								</table>					
+														echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
+													}
+													else
+													{
+														echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
+													}
+												}								
+											?>
+										</select>
+								    </div>
+							  	</div>					
 				      		</div>
 						    <div class="modal-footer">
-						    	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						    	<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
 						        <button type="submit" class="btn btn-primary">CREAR USUARIO</button>
 						     </div>
 			      		</form>	
@@ -164,7 +206,7 @@
 				<?php
 					include('../lib/footer.php');
 				?>	
-		</div>	
+			</div>	
 		</div>
 	</div>
 	<body>	

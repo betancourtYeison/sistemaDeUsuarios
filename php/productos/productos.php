@@ -27,7 +27,7 @@
 			</div>	
 				<div class="page-header" align = "center">
 					<image src='../../img/productos.png'>
-					<h2>Modulo de productos</h2>			
+					<h2>MÓDULO DE PRODUCTOS</h2>			
 				</div>
 		</div>		
 

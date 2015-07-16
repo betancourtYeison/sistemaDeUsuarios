@@ -1,7 +1,7 @@
 <?php
 	include("../lib/session.php");
 	
-	$miVariable =  $_POST['cedula'];				 
+	$miVariable =  $_GET['cedula'];				 
 	$miUsuario2 = new Usuario( $miVariable, "", "", "", "", "", "", "", "" );	
 	$miUsuario2 -> setConexion( $conexion );	
 	$filaUsuario2 = $miUsuario2 -> consultarUnUsuario( $miVariable );	

@@ -25,19 +25,14 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<h2>MODIFICAR USUARIO</h2>
-			</div>	
-			<div align="center">				
-				<form class="form-inline" action = '#' method = 'post'>
-					<input type="text" class="input-large" placeholder="Identificaci�n" name = 'cedulaConsulta'>					
-					<button type="submit" class="btn btn-primary">Buscar</button>
-				</form>					
-			</div>	
+				<image src='../../img/usuario.png'>
+				<h2>DETALLES DEL USUARIO</h2>			
+			</div>
 			
 			<?php
-				if( isset( $_POST['cedulaConsulta'] ) )
+				if( isset( $_GET['cedula'] ) )
 				{
-					$miVariable =  $_POST['cedulaConsulta'];				 
+					$miVariable =  $_GET['cedula'];	 
 					$miUsuario2 = new Usuario( $miVariable, "", "", "", "", "", "", "", "" );	
 					$miUsuario2 -> setConexion( $conexion );	
 					$filaUsuario2 = $miUsuario2 -> consultarUnUsuario( $miVariable );	
@@ -71,29 +66,53 @@
 					$perfil = '';
 				}
 			?>
-			
-			<div align = 'center'>	
-				<form action = "modificar.php" method = "post">
-				
-					<table cellpadding = "1px">
-						<tr>
-							<td>Numero de Identificacion :</td> <td><input type = "text" name = "cedula" value = '<?php echo $cedula; ?>' /></td>
-						</tr>
-							<td>Nombre :</td> <td><input type = "text" name = "nombre" value = '<?php echo $nombre; ?>' /></td>
-						</tr>
-						<tr>
-							<td>Apellido :</td> <td><input type = "text" name = "apellido" value = '<?php echo $apellido; ?>' /></td>
-						</tr>
-						<tr>
-							<td>E-m@il :</td> <td><input type = "text" name = "correo" value = '<?php echo $correo; ?>' /></td>
-						</tr>
-						<tr>
-							<td>Tel�fono :</td> <td><input type = "text" name = "telefono" value = '<?php echo $telefono; ?>' /></td>
-						</tr>
-						<tr>
-							<td>Estado :</td> 
-							<td>							
-								<select name='estado'>
+
+			<div align='center' class="col-lg-offset-3 col-md-offset-3">	
+				<form class="form-horizontal" role="form" action="modificar.php" method="post">
+				  	<div class="form-group">
+				    	<label for="username" class="col-sm-2 control-label">Identificación:</label>
+				    	<div class="col-sm-4">
+				      		<input type="text" readonly="readonly" class="form-control" id="username" 
+					      		name="cedula" value='<?php echo $cedula; ?>' placeholder="id"/>
+					    </div>
+				  	</div>
+
+				  	<div class="form-group">
+					    <label for="firstName" class="col-sm-2 control-label">Nombre:</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" id="firstName"
+					      		name="nombre" value='<?php echo $nombre; ?>' placeholder="nombre"/>
+					    </div>
+				  	</div>
+
+				  	<div class="form-group">
+					    <label for="lastName" class="col-sm-2 control-label">Apellido:</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" id="lastName"
+					            name="apellido" value='<?php echo $apellido; ?>' placeholder="apellido"/>
+					    </div>
+				  	</div>
+
+				  	<div class="form-group">
+					    <label for="email" class="col-sm-2 control-label">Email:</label>
+					    <div class="col-sm-4">
+					      <input type="email" class="form-control" id="email"
+					            name="correo" value='<?php echo $correo; ?>' placeholder="usuario@mail.com"/>
+				    	</div>
+				  	</div>
+
+				  	<div class="form-group">
+				    	<label for="phone" class="col-sm-2 control-label">Teléfono:</label>
+					    <div class="col-sm-4">				    
+					      <input type="text" class="form-control" id="phone"
+					            name="telefono" value='<?php echo $telefono; ?>' placeholder="telefono"/>
+					    </div>
+				  	</div>
+
+				  	<div class="form-group">
+				    	<label for="estado" class="col-sm-2 control-label">Estado:</label>
+					    <div class="col-sm-4">				    
+					      <select class="form-control" id="estado" name='estado'>
 									<?php
 										$miEstado = new Estado("","","");
 										$miEstado -> setConexion( $conexion );	
@@ -112,46 +131,64 @@
 										}								
 									?>
 								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Password :</td> <td><input type = "password" name = "pass" value = '<?php echo $pass; ?>'/></td>
-						</tr>
-						<tr>
-							<td>Repetir Password :</td> <td><input type = "password" name = "pass2"  value = '<?php echo $pass; ?>'/></td>
-						</tr>
-						<tr>
-							<td>Perfil : </td> 
-							<td>
-								<select name='perfil'>
-									<?php
-										$miPerfil = new Perfil("","");
-										$miPerfil -> setConexion( $conexion );	
-										$perfiles = $miPerfil -> consultarPerfiles( );						
-										if( $perfiles )
-										foreach( $perfiles as $perfil2 )
+					    </div>
+				  	</div>
+
+				  	<div class="form-group">
+					    <label for="password" class="col-sm-2 control-label">Contraseña:</label>
+					    <div class="col-sm-4">
+					      	<input type="password" class="form-control" id="password"
+								name="pass" value='<?php echo $pass; ?>' placeholder="****"/>
+					    </div>
+					</div>
+
+				  	<div class="form-group">
+					    <label for="re-password" class="col-sm-2 control-label">Repetir Contraseña:</label>
+					    <div class="col-sm-4">					    	
+					      	<input type="password" class="form-control" id="re-password"
+					            name="pass2" value='<?php echo $pass; ?>' placeholder="****"/>
+					    </div>
+					</div>
+
+					<div class="form-group">
+				    	<label for="perfil" class="col-sm-2 control-label">Estado:</label>
+					    <div class="col-sm-4">				    
+					      	<select class="form-control" id="perfil" name='perfil'>
+								<?php
+									$miPerfil = new Perfil("","");
+									$miPerfil -> setConexion( $conexion );	
+									$perfiles = $miPerfil -> consultarPerfiles( );						
+									if( $perfiles )
+									foreach( $perfiles as $perfil2 )
+									{
+										if( $perfil == $perfil2[0] )
 										{
-											if( $perfil == $perfil2[0] )
-											{
-												echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
-											}
-											else
-											{
-												echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
-											}
-										}								
-									?>
-								</select>
-							</td>
-						</tr>
-						<tr>
-						<!--<td>Deuda : </td> <td><input type = "text" name = "deuda" value = '<?php echo $deuda; ?>' /></td>-->
-						</tr>
-					</table>
-					<br></br>			 
-					<button type="submit" class="btn btn-primary">MODIFICAR USUARIO</button>
-				</form>				
-			</div>			
+											echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
+										}
+										else
+										{
+											echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
+										}
+									}								
+								?>
+							</select>
+					    </div>
+				  	</div>
+
+				  	<div class="form-group">
+					    <div class="col-sm-10">
+					    	<button type="submit" class="btn btn-primary">MODIFICAR</button>					    	
+					    </div>
+				  	</div>
+				</form>
+			</div>
+
+			<div id = "footer">
+				<?php
+					include('../lib/footer.php');
+				?>	
+			</div>	
+
 		</div>
 	</body>
 	
