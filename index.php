@@ -34,7 +34,6 @@
 				$miUsuario -> setEstado( $filaUsuario['5'] );
 				$miUsuario -> setPass( $filaUsuario['6'] );
 				$miUsuario -> setPerfil( $filaUsuario['7'] );
-				$miUsuario -> setDeuda( $filaUsuario['8'] );
 				
 				$_SESSION['miUsuario'] = serialize( $miUsuario );
 				$_SESSION["perfil"] = $miUsuario -> getPerfil();

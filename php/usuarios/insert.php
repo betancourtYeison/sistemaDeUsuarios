@@ -2,7 +2,7 @@
 	include("../lib/session.php");		
 		
 	$miUsuario2 = new Usuario( $_POST['cedula'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['telefono'],
-	$_POST['estado'], $_POST['pass'], $_POST['perfil'], $_POST['deuda']);
+	$_POST['estado'], $_POST['pass'], $_POST['perfil']);
 								
 	$miUsuario2->setConexion( $conexion );
 	

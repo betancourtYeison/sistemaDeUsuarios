@@ -9,10 +9,9 @@
 		private $estado; 
 		private $pass;
 		private $perfil;
-		private $deuda;		
 		var $conexion;
 			
-		function Usuario( $cedula,  $nombre,  $apellido,  $correo,  $telefono,  $estado, $pass,  $perfil,  $deuda )
+		function Usuario( $cedula,  $nombre,  $apellido,  $correo,  $telefono,  $estado, $pass,  $perfil)
 		{
 			$this->cedula = $cedula;
 			$this->nombre = $nombre;
@@ -22,7 +21,6 @@
 			$this->estado = $estado;
 			$this->pass = $pass;
 			$this->perfil = $perfil;
-			$this->deuda = $deuda;
 		}		
 		
 		function getCedula()
@@ -105,16 +103,6 @@
 			$this->perfil = $perfil;			
 		}
 		
-		function getDeuda()
-		{
-			return $this->deuda;
-		}
-		
-		function setDeuda( $deuda )
-		{
-			$this->deuda = $deuda;
-		}
-		
 		function setConexion ( $conexion )
 		{
 			$this -> conexion = $conexion;
@@ -122,9 +110,9 @@
 		
 		function insertarUsuario(  )
 		{			
-			$query = "insert into usuario( cedula, nombre, apellido, correo, telefono, codigoestado, pass, codigoperfil, deuda )
+			$query = "insert into usuario( cedula, nombre, apellido, correo, telefono, codigoestado, pass, codigoperfil)
 			values( '$this->cedula', '$this->nombre', '$this->apellido', '$this->correo', '$this->telefono', '$this->estado', 
-			'$this->pass',  '$this->perfil',  '$this->deuda' )";			
+			'$this->pass',  '$this->perfil' )";			
 			
 			$this -> conexion -> conectar();
 			$this -> conexion -> ejecutarRegistro( $query );
@@ -134,7 +122,7 @@
 		function modificarUsuario()
 		{
 			$query = "UPDATE usuario SET nombre = '$this->nombre', apellido = '$this->apellido', correo = '$this->correo',
-			telefono = '$this->telefono', codigoestado = '$this->estado', pass = '$this->pass', codigoperfil = '$this->perfil', deuda = '$this->deuda'
+			telefono = '$this->telefono', codigoestado = '$this->estado', pass = '$this->pass', codigoperfil = '$this->perfil'
 			WHERE cedula = '$this->cedula'";		
 			
 			$this -> conexion -> conectar();
@@ -165,7 +153,7 @@
 		function consultarUsuarios( )
 		{
 			$query = "SELECT usuario.cedula, usuario.nombre, usuario.apellido, usuario.correo, usuario.telefono, estado.descripcion,
-			perfil.descripcion, usuario.deuda
+			perfil.descripcion
 			FROM usuario, estado, perfil
 			WHERE usuario.codigoestado=estado.codigoestado
 			AND usuario.codigoperfil=perfil.codigoperfil";
