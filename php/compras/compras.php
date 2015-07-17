@@ -4,12 +4,11 @@
 <html>	
 	<head>
 		<title> - Modulo de compras</title>	
-		<link href = "../../css/bootstrap.css" rel = "stylesheet" type = "text/css" />	
-		<script src="../../js/jquery-1.8.2.js"></script>
-		<script src="../../js/bootstrap-modal.js"></script>
-		<script src="../../js/bootstrap-transition.js"></script>
-		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />
-		<link rel = "shortcut icon" type = "image/x-icon" href = "../../img/favicon.ico" />	
+		<link rel = "shortcut icon" type="image/x-icon" href = "../../img/favicon.ico" />	
+		<link href = "../../css/estilo.css" rel="stylesheet" type="text/css" />		
+		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
 	</head>	
 	
 	<body>	

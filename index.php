@@ -56,7 +56,7 @@
 	<head>	
 		<meta charset="UTF-8">
 		<title>Sistema de usuarios</title>
-		<link href = "css/bootstrap.css" rel = "stylesheet" type = "text/css" />		
+		<link href = "css/bootstrap.min.css" rel = "stylesheet" type = "text/css" />		
 		<link href = "css/estilo.css" rel = "stylesheet" type = "text/css" />		
 		<link rel = "shortcut icon" type = "image/x-icon" href = "img/favicon.ico" />		
 	</head>

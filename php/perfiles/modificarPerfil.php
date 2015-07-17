@@ -6,7 +6,7 @@
 	<head>
 		<title>MODIFICAR PERFIL</title>
 		<link rel = "stylesheet" type="text/css" href="css/estilo.css">
-		<link href = "../../css/bootstrap.css" rel = "stylesheet" type = "text/css" />
+		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	</head>
 	
 	<body>	

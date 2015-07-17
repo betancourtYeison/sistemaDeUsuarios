@@ -45,9 +45,10 @@
 		{
 			if ( !mysql_query( $query, $this->enlace ) )			
 			{
-				die( "Error : " . mysql_error() );
-			}			
-			echo "<br></br><h2 align='center'>EL PROCESO HA SIDO EXITOSO</h2>";
+				echo "<br></br><h2 align='center'>ERROR: LA IDENTIFICACIÓN YA EXISTE</h2>";
+			}else{
+				echo "<br></br><h2 align='center'>EL PROCESO HA SIDO EXITOSO</h2>";
+			}					
 		}	
 		
 		function consultarRegistro( $query )

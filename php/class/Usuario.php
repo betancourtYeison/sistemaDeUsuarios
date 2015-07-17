@@ -165,7 +165,7 @@
 
 		function loginUsuario( $cedula, $pass )
 		{
-			$query = "SELECT * FROM usuario WHERE cedula = $cedula AND pass = $pass";
+			$query = "SELECT * FROM usuario WHERE cedula = $cedula AND pass = $pass AND codigoestado = 1";
 			$this -> conexion -> conectar();				
 			$this -> conexion -> consultarRegistro( $query );			
 			$matrix = $this -> conexion->getMatrix();

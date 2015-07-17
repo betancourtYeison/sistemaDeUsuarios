@@ -6,10 +6,42 @@
 	<head>
 		<meta charset="UTF-8">
 		<title> - MODIFICAR USUARIO</title>			
-		<link href = "../../css/bootstrap.css" rel = "stylesheet" type = "text/css" />	
-		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />
-		<link rel = "shortcut icon" type = "image/x-icon" href = "../../img/favicon.ico" />	
-		<script src="../../js/jquery-1.9.0.min.js"></script>		
+		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/estilo.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" type = "image/x-icon" href = "../../img/favicon.ico" />	
+		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script> 
+		function comprobarClave(){ 
+		   	pass = document.formModificar.pass.value 
+		   	pass2 = document.formModificar.pass2.value
+
+		   	var espacios = false;
+		   	var cont = 0;
+		   	 
+		   	while (!espacios && (cont < pass.length)) {
+		   	  	if (pass.charAt(cont) == " ")
+		   	    	espacios = true;
+		   	  	cont++;
+		   	}
+		   	 
+		   	if (espacios) {
+		   	  	alert ("La contraseña no puede contener espacios en blanco");
+		   	  	return false;
+		   	} 
+
+		   	if (pass.length == 0 || pass2.length == 0) {
+		   	  	alert("Los campos de la contraseña no pueden quedar vacios");
+		   	  	return false;
+		   	}
+
+		   	if (pass != pass2) {
+		   	  	alert("Las contraseña deben de coincidir");
+		   	  	return false;
+		   	} else {
+		   	 	return true; 
+		   	} 
+		} 
+		</script> 	
 	</head>
 	
 	<body>	
@@ -68,12 +100,12 @@
 			?>
 
 			<div align='center' class="col-lg-offset-3 col-md-offset-3">	
-				<form class="form-horizontal" role="form" action="modificar.php" method="post">
+				<form class="form-horizontal" role="form" onSubmit="return comprobarClave()" action="modificar.php" method="post" name="formModificar">
 				  	<div class="form-group">
 				    	<label for="username" class="col-sm-2 control-label">Identificación:</label>
 				    	<div class="col-sm-4">
 				      		<input type="text" readonly="readonly" class="form-control" id="username" 
-					      		name="cedula" value='<?php echo $cedula; ?>' placeholder="id"/>
+					      		name="cedula" value='<?php echo $cedula; ?>' placeholder="id" required/>
 					    </div>
 				  	</div>
 
@@ -81,7 +113,7 @@
 					    <label for="firstName" class="col-sm-2 control-label">Nombre:</label>
 					    <div class="col-sm-4">
 					      <input type="text" class="form-control" id="firstName"
-					      		name="nombre" value='<?php echo $nombre; ?>' placeholder="nombre"/>
+					      		name="nombre" value='<?php echo $nombre; ?>' placeholder="nombre" required/>
 					    </div>
 				  	</div>
 
@@ -89,7 +121,7 @@
 					    <label for="lastName" class="col-sm-2 control-label">Apellido:</label>
 					    <div class="col-sm-4">
 					      <input type="text" class="form-control" id="lastName"
-					            name="apellido" value='<?php echo $apellido; ?>' placeholder="apellido"/>
+					            name="apellido" value='<?php echo $apellido; ?>' placeholder="apellido" required/>
 					    </div>
 				  	</div>
 
@@ -97,7 +129,7 @@
 					    <label for="email" class="col-sm-2 control-label">Email:</label>
 					    <div class="col-sm-4">
 					      <input type="email" class="form-control" id="email"
-					            name="correo" value='<?php echo $correo; ?>' placeholder="usuario@mail.com"/>
+					            name="correo" value='<?php echo $correo; ?>' placeholder="usuario@mail.com" required/>
 				    	</div>
 				  	</div>
 
@@ -105,7 +137,7 @@
 				    	<label for="phone" class="col-sm-2 control-label">Teléfono:</label>
 					    <div class="col-sm-4">				    
 					      <input type="text" class="form-control" id="phone"
-					            name="telefono" value='<?php echo $telefono; ?>' placeholder="telefono"/>
+					            name="telefono" value='<?php echo $telefono; ?>' placeholder="telefono" required/>
 					    </div>
 				  	</div>
 
@@ -138,7 +170,7 @@
 					    <label for="password" class="col-sm-2 control-label">Contraseña:</label>
 					    <div class="col-sm-4">
 					      	<input type="password" class="form-control" id="password"
-								name="pass" value='<?php echo $pass; ?>' placeholder="****"/>
+								name="pass" value='<?php echo $pass; ?>' placeholder="******" required minlength=6/>
 					    </div>
 					</div>
 
@@ -146,29 +178,41 @@
 					    <label for="re-password" class="col-sm-2 control-label">Repetir Contraseña:</label>
 					    <div class="col-sm-4">					    	
 					      	<input type="password" class="form-control" id="re-password"
-					            name="pass2" value='<?php echo $pass; ?>' placeholder="****"/>
+					            name="pass2" value='<?php echo $pass; ?>' placeholder="******" required minlength=6/>
 					    </div>
 					</div>
 
 					<div class="form-group">
-				    	<label for="perfil" class="col-sm-2 control-label">Estado:</label>
-					    <div class="col-sm-4">				    
+				    	<label for="perfil" class="col-sm-2 control-label">Perfil:</label>
+					    <div class="col-sm-4">						    	
 					      	<select class="form-control" id="perfil" name='perfil'>
 								<?php
 									$miPerfil = new Perfil("","");
 									$miPerfil -> setConexion( $conexion );	
-									$perfiles = $miPerfil -> consultarPerfiles( );						
+									$perfiles = $miPerfil -> consultarPerfiles( );	
+					    					    	
 									if( $perfiles )
 									foreach( $perfiles as $perfil2 )
 									{
-										if( $perfil == $perfil2[0] )
-										{
-											echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
-										}
-										else
-										{
-											echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
-										}
+										if($miUsuario -> getPerfil() == "1"){
+											if( $perfil == $perfil2[0] )
+											{
+												echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
+											}
+											else
+											{
+												echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
+											}
+										}else{
+											if( $perfil == $perfil2[0] )
+											{
+												echo "<option disabled value='$perfil2[0]' selected>$perfil2[1]</option>";		
+											}
+											else
+											{
+												echo "<option disabled value='$perfil2[0]'>$perfil2[1]</option>";							
+											}
+										}										
 									}								
 								?>
 							</select>

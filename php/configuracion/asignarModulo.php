@@ -5,9 +5,10 @@
 <html>	
 	<head>
 		<title> - MODULO PERFILES</title>	
-		<link href = "../../css/bootstrap.css" rel = "stylesheet" type = "text/css" />	
-		<script src="../../js/jquery-1.8.2.js"></script>
-		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />			
+		<link href = "../../css/estilo.css" rel="stylesheet" type="text/css" />		
+		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
 	</head>	
 	<body>
 	<div class="container">		

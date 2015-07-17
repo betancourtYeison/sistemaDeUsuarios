@@ -5,10 +5,9 @@
 	<head>	
 		<title>Sistema de usuarios</title>
 		<link rel = "shortcut icon" type = "image/x-icon" href = "../../img/favicon.ico" />	
-		<link href = "../../css/bootstrap.css" rel = "stylesheet" type = "text/css" />
-		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />	
-		<script src="../../js/bootstrap-transition.js"></script>
-		<script src="../../js/jquery-1.8.2.js"></script>		
+		<link href = "../../css/bootstrap.min.css" rel = "stylesheet" type = "text/css" />
+		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />			
+		<script src="../../js/jquery-1.11.3.min.js"></script>
 	</head>
 
 	<body>
