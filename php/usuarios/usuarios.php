@@ -176,7 +176,7 @@
 	      				  	    	<label for="username" class="col-sm-4 control-label">Identificación:</label>
 	      				  	    	<div class="col-sm-6">
 	      				  	      		<input type="text" class="form-control" id="username" 
-	      				  		      		name="cedula" placeholder="id" required/>
+	      				  		      		name="cedula" placeholder="id" required minlength=8/>
 	      				  		    </div>
 	      				  	  	</div>
 

@@ -15,10 +15,11 @@
 	{	
 		$miUsuario = new Usuario( "", "", "", "", "", "", "", "", "" );
 		$miUsuario->setConexion($conexion);
-		$usuario = $miUsuario->loginUsuario( $_POST['id'], $_POST['pas'] );
-		
+		$usuario = $miUsuario->loginUsuario( $_POST['id'], $_POST['pass'] );	
+		$miPerfil = $miUsuario->consultarUnUsuario( $_POST['id'] )[5];
+
 		//si existe un usuario con ese id y ese pass
-		if($usuario) 
+		if($usuario && $miPerfil == 1) 
 		{	
 			//si la sesion no ha sido iniciada
 			if (!isset($_SESSION["iniciada"])) 
@@ -47,8 +48,14 @@
 			}				
 		} 
 		else 
-		{		
-				echo "<script type='text/javascript'> alert('La identificación o la contraseña son incorrectas o el usuario está inactivo');</script>";
+		{
+			if($miPerfil == 2 || $miPerfil == 3)
+			{
+				echo "<script type='text/javascript'> alert('El usuario está Inactivo o Penalizado');</script>";
+			}else	
+			{
+				echo "<script type='text/javascript'> alert('La identificación o la contraseña son incorrectas');</script>";
+			}
 		}
 	}	
 ?>
@@ -81,7 +88,7 @@
 					</div>
 						<label class = "control-label" for = "inputPassword">Contraseña:</label>
 						<div class = "controls">
-							<input type = "password" id = "inputPassword" placeholder = "Ingrese su contraseña" name = 'pas'>
+							<input type = "password" id = "inputPassword" placeholder = "Ingrese su contraseña" name = 'pass'>
 						</div>
 					<div class = "controls">
 						<label class = "checkbox">

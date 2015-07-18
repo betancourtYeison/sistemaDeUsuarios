@@ -105,7 +105,7 @@
 				    	<label for="username" class="col-sm-2 control-label">Identificación:</label>
 				    	<div class="col-sm-4">
 				      		<input type="text" readonly="readonly" class="form-control" id="username" 
-					      		name="cedula" value='<?php echo $cedula; ?>' placeholder="id" required/>
+					      		name="cedula" value='<?php echo $cedula; ?>' placeholder="id" required minlength=8/>
 					    </div>
 				  	</div>
 
