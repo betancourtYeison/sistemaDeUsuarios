@@ -47,8 +47,8 @@
 			}				
 		} 
 		else 
-		{	
-		
+		{		
+				echo "<script type='text/javascript'> alert('La identificación o la contraseña son incorrectas o el usuario está inactivo');</script>";
 		}
 	}	
 ?>
@@ -58,7 +58,8 @@
 		<title>Sistema de usuarios</title>
 		<link href = "css/bootstrap.min.css" rel = "stylesheet" type = "text/css" />		
 		<link href = "css/estilo.css" rel = "stylesheet" type = "text/css" />		
-		<link rel = "shortcut icon" type = "image/x-icon" href = "img/favicon.ico" />		
+		<link rel = "shortcut icon" type = "image/x-icon" href = "img/favicon.ico" />
+
 	</head>
 	<body>	
 		<div class="container">	

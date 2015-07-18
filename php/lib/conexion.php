@@ -75,12 +75,16 @@
 		
 		function getMatrix()
 		{
+			if($this->consulta === FALSE) { 
+		    die(mysql_error()); // TODO: better error handling
+		}
 			$matrix = array();			
 			while( $row = mysql_fetch_array( $this->consulta ) )
 			{
 				$matrix[] = $row;
-			}			
+			}						
 			return $matrix;
+			
 		}
 	}		
 ?>

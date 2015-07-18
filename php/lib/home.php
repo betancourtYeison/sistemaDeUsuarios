@@ -1,5 +1,6 @@
 <?php	
 	include("../lib/session.php");	
+	print_r( $miUsuario );
 ?>
 <html>
 	<head>	
