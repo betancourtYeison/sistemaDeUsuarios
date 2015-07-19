@@ -3,8 +3,10 @@
 ?>
 <html>	
 	<head>
-		<meta charset="UTF-8">
-		<title> - MÓDULO USUARIOS</title>	
+		<meta charset="utf-8" />
+		<meta name="description" content="Proyecto de CreArteWeb para Sistemas de usuarios" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
+		<title>Módulo Usuarios</title>	
 		<link rel = "shortcut icon" type="image/x-icon" href = "../../img/favicon.ico" />	
 		<link href = "../../css/estilo.css" rel="stylesheet" type="text/css" />		
 		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -85,6 +87,7 @@
 						</tr>						
 						<?php
 							$usuarios = $miUsuario -> consultarUsuarios();							
+							$cedula = $miUsuario -> getCedula();
 							$perfil = $miUsuario -> getPerfil();
 							$miPerfil;
 
@@ -113,7 +116,7 @@
 											<td><a href='modificarUsuario.php?cedula=$usuario[0]'><button type='button' class='btn btn-primary'>MODIFICAR</button></a></td>
 										";
 									}else{
-										if($miPerfil == $usuario[6]){
+										if($cedula == $usuario[0] && $miPerfil == $usuario[6]){
 											echo
 											"
 												<td><a href='modificarUsuario.php?cedula=$usuario[0]'><button type='button' class='btn btn-primary'>MODIFICAR</button></a></td>

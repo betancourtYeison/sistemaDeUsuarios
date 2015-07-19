@@ -61,7 +61,9 @@
 ?>
 <html>
 	<head>	
-		<meta charset="UTF-8">
+		<meta charset="utf-8" />
+		<meta name="description" content="Proyecto de CreArteWeb para Sistemas de usuarios" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
 		<title>Sistema de usuarios</title>
 		<link href = "css/bootstrap.min.css" rel = "stylesheet" type = "text/css" />		
 		<link href = "css/estilo.css" rel = "stylesheet" type = "text/css" />		

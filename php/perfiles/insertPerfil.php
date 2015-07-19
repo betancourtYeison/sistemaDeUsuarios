@@ -47,7 +47,14 @@
 ?>
 <html>
 	<head>
-		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<meta charset="utf-8" />
+		<meta name="description" content="Proyecto de CreArteWeb para Sistemas de usuarios" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
+		<title>Insertar Perfil</title>	
+		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">	
+		<link rel = "shortcut icon" type="image/x-icon" href = "../../img/favicon.ico" />	
+		<link href = "../../css/estilo.css" rel="stylesheet" type="text/css" />		
+		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	</head>
 	
 	<body>	

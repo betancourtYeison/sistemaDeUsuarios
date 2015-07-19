@@ -4,12 +4,15 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8">
-		<title> - MODIFICAR USUARIO</title>			
-		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<link href="../../css/estilo.css" rel="stylesheet" type="text/css" />
+		<meta charset="utf-8" />
+		<meta name="description" content="Proyecto de CreArteWeb para Sistemas de usuarios" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
+		<title>Modificar Usuario</title>			
 		<link rel="shortcut icon" type = "image/x-icon" href = "../../img/favicon.ico" />	
+		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/estilo.css" rel="stylesheet" type="text/css" />		
 		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>		
 		<script> 
 		function comprobarClave(){ 
 		   	pass = document.formModificar.pass.value 
@@ -182,42 +185,43 @@
 					    </div>
 					</div>
 
-					<div class="form-group">
-				    	<label for="perfil" class="col-sm-2 control-label">Perfil:</label>
-					    <div class="col-sm-4">						    	
-					      	<select class="form-control" id="perfil" name='perfil'>
-								<?php
-									$miPerfil = new Perfil("","");
-									$miPerfil -> setConexion( $conexion );	
-									$perfiles = $miPerfil -> consultarPerfiles( );	
-					    					    	
-									if( $perfiles )
-									foreach( $perfiles as $perfil2 )
-									{
-										if($miUsuario -> getPerfil() == "1"){
-											if( $perfil == $perfil2[0] )
-											{
-												echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
-											}
-											else
-											{
-												echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
-											}
-										}else{
-											if( $perfil == $perfil2[0] )
-											{
-												echo "<option disabled value='$perfil2[0]' selected>$perfil2[1]</option>";		
-											}
-											else
-											{
-												echo "<option disabled value='$perfil2[0]'>$perfil2[1]</option>";							
-											}
-										}										
-									}								
-								?>
-							</select>
-					    </div>
-				  	</div>
+					<?php
+						$miPerfil = new Perfil("","");
+						$miPerfil -> setConexion( $conexion );	
+						$perfiles = $miPerfil -> consultarPerfiles( );	
+		    			
+		    			if($miUsuario -> getPerfil() == "1"){
+		    				echo 
+							"<div class='form-group'>
+			    				<label for='perfil' class='col-sm-2 control-label'>Perfil:</label>
+				    			<div class='col-sm-4'>						    	
+				      				<select class='form-control' id='perfil' name='perfil'>";	
+		    			}else{
+		    				echo 
+							"<div class='hide form-group'>
+			    				<label for='perfil' class='col-sm-2 control-label'>Perfil:</label>
+				    			<div class='col-sm-4'>						    	
+				      				<select class='form-control' id='perfil' name='perfil'>";	
+		    			}
+
+						if( $perfiles )
+						foreach( $perfiles as $perfil2 )
+						{							
+							if( $perfil == $perfil2[0] )
+							{
+								echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
+							}
+							else
+							{
+								echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
+							}
+						}
+						
+						echo 	"</select>
+					   		</div>
+				  		</div>";								
+
+					?>							
 
 				  	<div class="form-group">
 					    <div class="col-sm-10">

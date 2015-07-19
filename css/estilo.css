@@ -1,17 +1,3 @@
-.LogoIndex{
-	width: 9%;
-}
-
-.logoLogin{
-	margin-top: 20%;
-	margin-bottom: 20%;
-	width: 70%;
-}
-
-.barraUsuario{
-	margin-top: 2%;
-}
-
 #footer
 {
 	background-color: #0EC3DE;
@@ -22,4 +8,60 @@
   	background-image: url('../img/footer.png');
 	background-size: 100% 100%;
 	color: #FFF;
+}
+
+@media screen and (min-width:310px){
+
+	.LogoIndex{
+		width: 30%;
+	}
+
+	.logoLogin{
+		margin: 0 auto;
+		width: 30%;
+	}
+
+	.logoUsuario{
+		text-align: center;
+	}
+
+	.barraUsuario{
+		padding: 5%;
+	}
+
+}
+
+@media screen and (min-width:470px){
+
+	.LogoIndex{
+		width: 20%;
+	}
+
+	.logoLogin{
+		margin: 0 auto;
+		width: 20%;
+	}
+
+}
+
+@media screen and (min-width:1014px){
+
+	.LogoIndex{
+		width: 9%;
+	}
+
+	.logoLogin{
+		margin-top: 20%;
+		margin-bottom: 20%;
+		width: 100%;
+	}
+
+	.logoUsuario{
+		text-align: left;
+	}
+
+	.barraUsuario{
+		padding: 2%;
+	}
+
 }

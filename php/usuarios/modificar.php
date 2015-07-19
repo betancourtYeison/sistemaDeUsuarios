@@ -1,5 +1,5 @@
 <?php
-	include("../lib/session.php");	
+	include("../lib/session.php");
 	
 	$miUsuario2 = new Usuario( $_POST['cedula'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['telefono'], 
 	$_POST['estado'], $_POST['pass'], $_POST['perfil']);
@@ -10,7 +10,10 @@
 
 <html>
 	<head>
-		<title> MODIFICAR USUARIO</title>	
+		<meta charset="utf-8" />
+		<meta name="description" content="Proyecto de CreArteWeb para Sistemas de usuarios" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
+		<title>Modificar Usuario</title>	
 		<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=http://localhost/sistemaDeUsuarios/php/usuarios/usuarios.php"> 	
 		<link rel = "shortcut icon" type="image/x-icon" href = "../../img/favicon.ico" />	
 		<link href = "../../css/estilo.css" rel="stylesheet" type="text/css" />		
@@ -31,7 +34,13 @@
 			<div class="page-header" align = "center">
 				<image src='../../img/usuario.png'>
 				<h2>MÓDULO USUARIOS</h2>			
-				<?php $miUsuario2->modificarUsuario( $_POST['cedula'] ); ?>
+				<?php 
+					$miUsuario2->modificarUsuario( $_POST['cedula'] ); 
+					if(($miUsuario -> getEstado() != $_POST['estado']) || ($miUsuario -> getPerfil() != $_POST['perfil'])){
+						header( "refresh:1;url=../lib/logout.php" );
+					}
+				?>
+
 			</div>			
 			<div id = "footer">
 				<?php
