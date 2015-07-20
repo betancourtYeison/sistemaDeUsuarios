@@ -52,12 +52,14 @@
 				<?php
 					include('../lib/barraUsuario.php');
 				?>
-			</div>		
+			</div>	
+
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
 				<?php
 					include('../lib/menu.php');
 				?>	
 			</div>	
+
 			<div class="page-header" align = "center">
 				<image src='../../img/usuario.png'>
 				<h2>MÓDULO USUARIOS</h2>			
@@ -70,7 +72,6 @@
 				</button>							
 			</div>	
 
-			<br></br>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table align = "center" cellpadding = "10px" class = "table table-striped table-hover">				
@@ -160,9 +161,7 @@
 							}	
 						?>				
 					</table>
-				</div>			
-				<div class="span1">
-				</div>
+				</div>							
 			</div>	
 			
 			<!-- Modal -->

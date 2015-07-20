@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<meta name="description" content="Proyecto de CreArteWeb para Sistemas de usuarios" />
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
-		<title>M�dulo Perfiles</title>	
+		<title>Módulo Perfiles</title>	
 		<link rel = "shortcut icon" type="image/x-icon" href = "../../img/favicon.ico" />	
 		<link href = "../../css/estilo.css" rel="stylesheet" type="text/css" />		
 		<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -15,94 +15,126 @@
 	</head>	
 	
 	<body>	
-	<div class="container">	
-		<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
-			<?php
-				include('../lib/barraUsuario.php');
-			?>
-		</div>		
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
-			<?php
-				include('../lib/menu.php');
-			?>	
-		</div>	
-		<div id='content'>			
+		<div class="container">	
+			<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
+				<?php
+					include('../lib/barraUsuario.php');
+				?>
+			</div>	
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
+				<?php
+					include('../lib/menu.php');
+				?>	
+			</div>	
+
 			<div class="page-header" align = "center">
 				<image src='../../img/perfil.png'>
-				<h2>ADMINISTRAR PERFILES</h2>
+				<h2>MÓDULO PERFILES</h2>			
 			</div>
-		    <div class="page-header" align = "center">				
-				<h3>Aqui se configuran los prefiles que interactuan con el sistema</h3>
+
+			<div align="center" class="class="col-lg-12 col-md-12 col-sm-12 col-xs-12"">				
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+					NUEVO
+				</button>							
 			</div>	
-			
-			<div class="row">
-				<div class="span1"></div>
-				<div class="span8">
-						<a class="btn" data-toggle="modal" href="#myModal" >NUEVO</a>									
-						<button class="btn btn" type="button">
-							<a href = 'modificarPerfil.php'>MODIFICAR</a>
-						</button>
-						<button class="btn btn" type="button">
-							<a href = 'eliminarPerfil.php'>ELIMINAR</a>
-						</button>					
-				</div>			
-			</div>		
-			<br></br>
-			<div class="row">
-				<div class="span1">
-				</div>
-				<div class="span14">
-					<table align = "center" cellpadding = "10px" class = "table table-striped">				
+
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table align = "center" cellpadding = "10px" class = "table table-striped table-hover">				
 						<tr align = "center">						
 							<th>CODIGO</th> 					 
-							<th>DESCRIPCION</th> 																									
+							<th>DESCRIPCION</th>
+							<th style="width:20px;"> </th>
+							<th style="width:20px;"> </th>				 																									
 						</tr>						
 						<?php
-							$miPerfil = new Perfil( "", "" );
-							$miPerfil->setConexion( $conexion );
-							$perfiles = $miPerfil -> consultarPerfiles();
+							$objetoPerfil = new Perfil( "", "" );
+							$objetoPerfil->setConexion( $conexion );
+							$perfiles = $objetoPerfil -> consultarPerfiles();
+							$cedula = $miUsuario -> getCedula();
+							$perfil = $miUsuario -> getPerfil();
+							$miPerfil;
+
+							if($perfil == 1){
+								$miPerfil = "ADMINISTRADOR";
+							}else{
+								$miPerfil = "NORMAL";
+							}
+
 							if( $perfiles )
 							foreach( $perfiles as $perfil )
 							{
 								echo 	
 								"<tr>
 									<td>$perfil[0]</td>
-									<td>$perfil[1]</td>																									
+									<td>$perfil[1]</td>
+									<td><a href='modificarPerfil.php?perfil=$perfil[0]'><button type='button' class='btn btn-primary'>MODIFICAR</button></a></td>
+									<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#modalPerfil$perfil[0]'>ELIMINAR</button></td>
 								</tr>";
+								
+								echo
+								"<div align='center' class='modal fade bs-example-modal-smm' id='modalPerfil$perfil[0]' tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
+								  	<div class='modal-dialog modal-sm'>
+								    	<div class='modal-content'>
+								      		<div class='modal-header'>
+								              	<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+								              	<h4 class='modal-title' id='myModalLabel'>¿Estás seguro?</h4>
+								            </div>
+								            <div class='modal-body'>
+								            	<a href='eliminar.php?perfil=$perfil[0]'><button type='submit' class='btn btn-danger'>SI</button></a>
+								            	<button type='button' class='btn btn-default' data-dismiss='modal'>NO</button>				            					              
+								            </div>
+								    	</div>
+									</div>
+								</div>";											
 							}	
-						?>				
+						?>						
 					</table>
 				</div>			
-				<div class="span1">
-				</div>
 			</div>	
 			
-			<div class="modal hide" id="myModal">
-			  <div class="modal-header">
-				<a class="close" data-dismiss="modal">�</a>
-				<h3>CREAR PERFIL</h3>
-			  </div>
-			  <div class="modal-body">
-				<form action = "insert.php" method = "post">
-				
-					<table cellpadding = "0px">
-						<tr>
-							<td>CODIGO :</td> <td><input type = "text" name = "codigo" /></td>
-						</tr>
-							<td>DESCRIPCION :</td> <td><input type = "text" name = "descripcion" /></td>
-						</tr>																
-					</table>
-					<br></br>			 
-					<button type="submit" class="btn btn-primary">CREAR PERFIL</button>
-				</form>	
-			  </div>
-			</div>
-		</div>
-		<div id = "footer">
-			<?php
-				include('../lib/footer.php');
-			?>	
-		</div>	
-	</div>			
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        		<h4 class="modal-title" id="myModalLabel">CREAR PERFIL</h4>
+			      		</div>
+			      		<form class="form-horizontal" role="form" action="insert.php" method="post" >
+			      			<div class="modal-body">
+	      				  	  	<div class="form-group">
+	      				  	    	<label for="codigo" class="col-sm-4 control-label">Codigo:</label>
+	      				  	    	<div class="col-sm-6">
+	      				  	      		<input type="text" class="form-control" id="codigo" 
+	      				  		      		name="codigo" placeholder="id" required minlength=1/>
+	      				  		    </div>
+	      				  	  	</div>
+
+      				  	  	  	<div class="form-group">
+      				  	  		    <label for="descripcion" class="col-sm-4 control-label">Descripción :</label>
+      				  	  		    <div class="col-sm-6">
+      				  	  		      <input type="text" class="form-control" id="descripcion"
+      				  	  		      		name="descripcion" placeholder="descripción" required minlength=4/>
+      				  	  		    </div>
+      				  	  	  	</div>					
+				      		</div>
+						    <div class="modal-footer">
+						    	<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+						        <button type="submit" class="btn btn-primary">CREAR PERFIL</button>
+						     </div>
+			      		</form>	
+			    	</div>
+			  	</div>
+			</div>		
+
+			<div id = "footer">
+				<?php
+					include('../lib/footer.php');
+				?>	
+			</div>	
+		</div>			
 	<body>	
 </html>

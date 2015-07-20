@@ -16,57 +16,75 @@
 	</head>
 	
 	<body>	
-		<?php
-			include('../lib/barraUsuario.php');
-		?>
-		<br></br>
-		<?php
-			include('../lib/menu.php');
-		?>
-		<div class="page-header" align = "center">
-			<h2>MODIFICAR PERFIL</h2>
-		</div>	
-		<div align="center">
-			
-			<form class="form-inline" action = '#' method = 'post'>
-				<input type="text" class="input-large" placeholder="C�digo del perfil" name = 'codigoConsulta'>					
-				<button type="submit" class="btn btn-primary">Buscar</button>
-			</form>					
-		</div>	
-		
-		<?php
-			if( isset( $_POST['codigoConsulta'] ) )
-			{
-				$miVariable =  $_POST['codigoConsulta'];				 
-				$miPerfil = new Perfil( $miVariable, "" );	
-				$miPerfil -> setConexion( $conexion );	
-				$filaUsuario2 = $miPerfil -> consultarUnPerfil( $miVariable );	
-				$miPerfil -> setCodigo( $filaUsuario2['0'] );					
-				$miPerfil -> setDescripcion( $filaUsuario2['1'] );							
-							
-				$codigo = $miPerfil -> getCod();					
-				$descripcion = $miPerfil -> getDescripcion();													
-			}					
-			else
-			{
-				$codigo = '';
-				$descripcion = '';										
-			}
-		?>
-		
-		<div align = 'center'>	
-			<form action = "modificar.php" method = "post">
-			
-				<table cellpadding = "1px">
-					<tr>
-						<td>CODIGO :</td> <td><input type = "text" name = "codigo" value = '<?php echo $codigo; ?>' /></td>
-					</tr>
-						<td>DESCRIPCION :</td> <td><input type = "text" name = "descripcion" value = '<?php echo $descripcion; ?>' /></td>
-					</tr>													
-				</table>
-				<br></br>			 
-				<button type="submit" class="btn btn-primary">MODIFICAR PERFIL</button>
-			</form>				
+		<div class="container">	
+			<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
+				<?php
+					include('../lib/barraUsuario.php');
+				?>
+			</div>	
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
+				<?php
+					include('../lib/menu.php');
+				?>	
+			</div>	
+
+			<div class="page-header" align = "center">
+				<image src='../../img/perfil.png'>
+				<h2>MÓDULO PERFILES</h2>			
+			</div>
+
+			<?php
+				if( isset( $_GET['perfil'] ) )
+				{
+					$miVariable =  $_GET['perfil'];				 
+					$miPerfil = new Perfil( $miVariable, "" );	
+					$miPerfil -> setConexion( $conexion );	
+					$filaUsuario2 = $miPerfil -> consultarUnPerfil( $miVariable );	
+					$miPerfil -> setCodigo( $filaUsuario2['0'] );					
+					$miPerfil -> setDescripcion( $filaUsuario2['1'] );							
+								
+					$codigo = $miPerfil -> getCod();					
+					$descripcion = $miPerfil -> getDescripcion();													
+				}					
+				else
+				{
+					$codigo = '';
+					$descripcion = '';										
+				}
+			?>
+
+			<div align='center' class="col-lg-offset-3 col-md-offset-3">	
+				<form class="form-horizontal" role="form" action="modificar.php" method="post">
+			  	  	<div class="form-group">
+			  	    	<label for="codigo" class="col-sm-2 control-label">Codigo:</label>
+			  	    	<div class="col-sm-4">
+			  	      		<input type="text" class="form-control" id="codigo" 
+			  		      		name="codigo" value='<?php echo $codigo; ?>' placeholder="id" required minlength=1/>
+			  		    </div>
+			  	  	</div>
+
+		  	  	  	<div class="form-group">
+		  	  		    <label for="descripcion" class="col-sm-2 control-label">Descripción :</label>
+		  	  		    <div class="col-sm-4">
+		  	  		      <input type="text" class="form-control" id="descripcion"
+		  	  		      		name="descripcion" value='<?php echo $descripcion; ?>' placeholder="descripción" required minlength=4/>
+		  	  		    </div>
+		  	  	  	</div>						
+
+				  	<div class="form-group">
+					    <div class="col-sm-10">
+					    	<button type="submit" class="btn btn-primary">MODIFICAR</button>					    	
+					    </div>
+				  	</div>
+				</form>
+			</div>
+
+			<div id = "footer">
+				<?php
+					include('../lib/footer.php');
+				?>	
+			</div>	
 		</div>			
 	</body>
 	

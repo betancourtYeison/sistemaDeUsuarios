@@ -4,9 +4,7 @@
 	$miVariable =  $_GET['cedula'];				 
 	$miUsuario2 = new Usuario( $miVariable, "", "", "", "", "", "", "", "" );	
 	$miUsuario2 -> setConexion( $conexion );	
-	$filaUsuario2 = $miUsuario2 -> consultarUnUsuario( $miVariable );	
-							
-	$miUsuario2->setConexion( $conexion );		
+	$filaUsuario2 = $miUsuario2 -> consultarUnUsuario( $miVariable );							
 ?>
 
 <html>
@@ -42,6 +40,6 @@
 					include('../lib/footer.php');
 				?>	
 			</div>	
-		</div>
+		</div>	
 	</body>
 </html>
