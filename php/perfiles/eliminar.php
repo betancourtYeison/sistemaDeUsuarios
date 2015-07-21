@@ -35,7 +35,7 @@
 				<h2>MÓDULO PERFILES</h2>
 				<?php $miPerfil2->eliminarPerfil( ); ?>
 			</div>			
-			<div id = "footer">
+			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<?php
 					include('../lib/footer.php');
 				?>	

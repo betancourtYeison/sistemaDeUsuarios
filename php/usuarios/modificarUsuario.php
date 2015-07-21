@@ -60,7 +60,7 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/usuario.png'>
+				<image src='../../img/usuario.png' class='img-responsive'>
 				<h2>DETALLES DEL USUARIO</h2>			
 			</div>
 			
@@ -231,7 +231,7 @@
 				</form>
 			</div>
 
-			<div id = "footer">
+			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<?php
 					include('../lib/footer.php');
 				?>	

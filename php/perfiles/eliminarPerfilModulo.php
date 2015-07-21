@@ -1,8 +1,10 @@
 <?php
-	include("../lib/session.php");		
-		
-	$miPerfil2 = new Perfil( $_POST['codigo'], $_POST['descripcion'] );								
-	$miPerfil2->setConexion( $conexion );	
+	include("../lib/session.php");
+	
+	$miVariable =  $_GET['perfil'];				 
+	$miPerfil2 = new PerfilModulo( $miVariable, "" , "" );								
+	$miPerfil2->setConexion( $conexion );
+	
 ?>
 
 <html>
@@ -10,11 +12,11 @@
 		<meta charset="utf-8" />
 		<meta name="description" content="Proyecto de CreArteWeb para Sistemas de usuarios" />
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
-		<title>Insertar Perfil</title>	
-		<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=http://localhost/sistemaDeUsuarios/php/perfiles/perfiles.php"> 
+		<title>Eliminar Perfil</title>
+		<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=http://localhost/sistemaDeUsuarios/php/perfiles/asignarModulo.php"> 
 		<link rel = "shortcut icon" type = "image/x-icon" href = "../../img/favicon.ico" />	
 		<link href = "../../css/bootstrap.min.css" rel = "stylesheet" type = "text/css" />
-		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />					
+		<link href = "../../css/estilo.css" rel = "stylesheet" type = "text/css" />			
 	</head>	
 	<body>	
 		<div class="container">		
@@ -29,15 +31,15 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/usuario.png' class='img-responsive'>
-				<h2>MÓDULO PERFILES</h2>			
-				<?php $miPerfil2->insertarPerfil(); ?>
+				<image src='../../img/perfil.png'>
+				<h2>MÓDULO PERFILES</h2>
+				<?php $miPerfil2->eliminarPerfilModulo( ); ?>
 			</div>			
-			<div id = "footer">
+			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<?php
 					include('../lib/footer.php');
 				?>	
 			</div>	
-		</div>		
+		</div>	
 	</body>
 </html>

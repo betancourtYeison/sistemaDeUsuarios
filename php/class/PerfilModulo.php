@@ -69,7 +69,7 @@
 		
 		function eliminarPerfilModulo()
 		{
-			$query = "DELETE FROM modulo WHERE codigo = '$this->codigo' ";		
+			$query = "DELETE FROM perfilmodulo WHERE codigo = '$this->codigo' ";		
 			
 			$this -> conexion -> conectar();
 			$this -> conexion -> ejecutarRegistro( $query );
@@ -119,7 +119,7 @@
 		}		
 		function consultarTodosPerfilModulo( )
 		{	
-			$query = "SELECT perfil.descripcion, modulo.descripcion 
+			$query = "SELECT perfilmodulo.codigo, perfil.descripcion, modulo.descripcion 
 			FROM perfilmodulo, perfil, modulo
 			WHERE perfilmodulo.codigoperfil = perfil.codigoperfil
 			AND perfilmodulo.codigomodulo = modulo.codigomodulo

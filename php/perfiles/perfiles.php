@@ -29,7 +29,7 @@
 			</div>	
 
 			<div class="page-header" align = "center">
-				<image src='../../img/perfil.png'>
+				<image src='../../img/perfil.png' class='img-responsive'>
 				<h2>MÓDULO PERFILES</h2>			
 			</div>
 
@@ -130,7 +130,7 @@
 			  	</div>
 			</div>		
 
-			<div id = "footer">
+			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<?php
 					include('../lib/footer.php');
 				?>	
