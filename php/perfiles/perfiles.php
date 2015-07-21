@@ -44,8 +44,8 @@
 				<div class="table-responsive">
 					<table align = "center" cellpadding = "10px" class = "table table-striped table-hover">				
 						<tr align = "center">						
-							<th>CODIGO</th> 					 
-							<th>DESCRIPCION</th>
+							<th>CÓDIGO</th> 					 
+							<th>DESCRIPCIÓN</th>
 							<th style="width:20px;"> </th>
 							<th style="width:20px;"> </th>				 																									
 						</tr>						

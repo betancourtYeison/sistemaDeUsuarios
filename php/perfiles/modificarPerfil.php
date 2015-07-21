@@ -65,7 +65,7 @@
 			  	  	</div>
 
 		  	  	  	<div class="form-group">
-		  	  		    <label for="descripcion" class="col-sm-2 control-label">Descripción :</label>
+		  	  		    <label for="descripcion" class="col-sm-2 control-label">Descripción:</label>
 		  	  		    <div class="col-sm-4">
 		  	  		      <input type="text" class="form-control" id="descripcion"
 		  	  		      		name="descripcion" value='<?php echo $descripcion; ?>' placeholder="descripción" required minlength=4/>

@@ -15,30 +15,29 @@
 	</head>	
 	
 	<body>	
-
 		<div class="container">
-			<div class ="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='cabecera'>
 				<?php
 					include('../lib/barraUsuario.php');
 				?>
-			</div>		
+			</div>	
+
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id='menu'>
 				<?php
 					include('../lib/menu.php');
 				?>	
 			</div>	
-				<div class="page-header" align = "center">
-					<image src='../../img/productos.png'>
-					<h2>MÓDULO DE PRODUCTOS</h2>			
-				</div>
-		</div>		
 
-			  
-		<div id = "footer">
-			<?php
-				include('../lib/footer.php');
-			?>	
-		</div>	
-	</div>
+			<div class="page-header" align = "center">
+				<image src='../../img/productos.png'class='img-responsive'>
+				<h2>MÓDULO DE PRODUCTOS</h2>					
+			</div>
+
+			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<?php
+					include('../lib/footer.php');
+				?>	
+			</div>
+		</div>			
 	<body>	
 </html>

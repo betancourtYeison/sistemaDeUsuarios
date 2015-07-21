@@ -83,7 +83,7 @@
 					<table align = "center" cellpadding = "10px" class = "table table-striped table-hover">				
 						<tr align = "center">		 					 
 							<th>PERFIL</th> 
-							<th>MODULO</th>
+							<th>MÓDULO</th>
 							<th style="width:20px;"> </th>        					
 						</tr>						
 						<?php
