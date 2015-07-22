@@ -32,7 +32,7 @@
 			</div>	
 			<div class="page-header" align = "center">
 				<image src='../../img/modulo.png' class='img-responsive'>
-				<h2>MODIFICAR MÓDULO</h2>			
+				<h2>ELIMINAR MÓDULO</h2>			
 				<?php $miModulo2->eliminarModulo( ); ?>
 			</div>			
 			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

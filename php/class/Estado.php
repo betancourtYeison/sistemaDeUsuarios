@@ -82,9 +82,8 @@
 			
 			$this -> conexion -> conectar();			
 			$this -> conexion -> consultarRegistro( $query );
-			$fila = $this -> conexion -> obtenerResultado();						
-			$this -> conexion -> cerrarConexion();
-			return $fila;			
+			$matrix = $this -> conexion->getMatrix();
+			return $matrix;			
 		}
 		
 		//metodo que consulta todos los perfiles	
