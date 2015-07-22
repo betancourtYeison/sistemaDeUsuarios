@@ -32,13 +32,10 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/usuario.png' class='img-responsive'>
-				<h2>MÓDULO USUARIOS</h2>			
+				<image src='../../img/usuarioEditar.png' class='img-responsive'>
+				<h2>MODIFICAR USUARIO</h2>			
 				<?php 
 					$miUsuario2->modificarUsuario( $_POST['cedula'] ); 
-					if(($miUsuario -> getEstado() != $_POST['estado']) || ($miUsuario -> getPerfil() != $_POST['perfil'])){
-						header( "refresh:1;url=../lib/logout.php" );
-					}
 				?>
 
 			</div>			

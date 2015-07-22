@@ -31,7 +31,7 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/modulo.png' class='img-responsive'>
+				<image src='../../img/moduloEliminado.png' class='img-responsive'>
 				<h2>ELIMINAR MÓDULO</h2>			
 				<?php $miModulo2->eliminarModulo( ); ?>
 			</div>			

@@ -31,8 +31,8 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/usuario.png' class='img-responsive'>
-				<h2>MÓDULO USUARIOS</h2>			
+				<image src='../../img/usuarioEliminado.png' class='img-responsive'>
+				<h2>ELIMINAR USUARIO</h2>			
 				<?php $miUsuario2->eliminarUsuario( ); ?>
 			</div>			
 			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

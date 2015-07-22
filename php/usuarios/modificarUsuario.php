@@ -60,7 +60,7 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/usuario.png' class='img-responsive'>
+				<image src='../../img/usuarioEditar.png' class='img-responsive'>
 				<h2>DETALLES DEL USUARIO</h2>			
 			</div>
 			
@@ -144,31 +144,44 @@
 					    </div>
 				  	</div>
 
-				  	<div class="form-group">
-				    	<label for="estado" class="col-sm-2 control-label">Estado:</label>
-					    <div class="col-sm-4">				    
-					      <select class="form-control" id="estado" name='estado'>
-									<?php
-										$miEstado = new Estado("","","");
-										$miEstado -> setConexion( $conexion );	
-										$estados = $miEstado -> consultarEstadoUsuario( );						
-										if( $estados )
-										foreach( $estados as $estado2 )
-										{
-											if( $estado == $estado2[0]  )
-											{
-												echo "<option value='$estado2[0]' selected>$estado2[1]</option>";	
-											}
-											else
-											{										
-												echo "<option value='$estado2[0]'>$estado2[1]</option>";	
-											}						
-										}								
-									?>
-								</select>
-					    </div>
-				  	</div>
+				  	<?php
+				  		$miEstado = new Estado("","","");
+  						$miEstado -> setConexion( $conexion );	
+  						$estados = $miEstado -> consultarEstadoUsuario( );						
 
+				  		if(($miUsuario -> getPerfil() == '1') && ($miUsuario -> getCedula() != $cedula)){
+				  			echo 
+				  			"<div class='form-group'>
+				    			<label for='estado' class='col-sm-2 control-label'>Estado:</label>
+					    		<div class='col-sm-4'>				    
+					      			<select class='form-control' id='estado' name='estado'>";
+					     }else{
+					     	echo 
+				  			"<div class='hide form-group'>
+				    			<label for='estado' class='col-sm-2 control-label'>Estado:</label>
+					    		<div class='col-sm-4'>				    
+					      			<select class='form-control' id='estado' name='estado'>";	
+					     }
+
+						if( $estados )
+						foreach( $estados as $estado2 )
+						{
+							if( $estado == $estado2[0]  )
+							{
+								echo "<option value='$estado2[0]' selected>$estado2[1]</option>";	
+							}
+							else
+							{										
+								echo "<option value='$estado2[0]'>$estado2[1]</option>";	
+							}						
+						}
+
+						echo 
+						"		</select>
+						    </div>
+			  			</div>";					  				  
+					?>
+								
 				  	<div class="form-group">
 					    <label for="password" class="col-sm-2 control-label">Contraseña:</label>
 					    <div class="col-sm-4">
@@ -190,7 +203,7 @@
 						$miPerfil -> setConexion( $conexion );	
 						$perfiles = $miPerfil -> consultarPerfiles( );	
 		    			
-		    			if($miUsuario -> getPerfil() == "1"){
+		    			if(($miUsuario -> getPerfil() == '1') && ($miUsuario -> getCedula() != $cedula)){
 		    				echo 
 							"<div class='form-group'>
 			    				<label for='perfil' class='col-sm-2 control-label'>Perfil:</label>

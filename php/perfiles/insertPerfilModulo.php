@@ -31,8 +31,8 @@
 			</div>	
 
 			<div class="page-header" align = "center">
-				<image src='../../img/configuracion.png' class='img-responsive'>
-				<h2>MÓDULO PERFILES</h2>			
+				<image src='../../img/perfilModulo.png' class='img-responsive'>
+				<h2>ASIGNAR MÓDULO A PERFIL</h2>			
 				<?php					
 					$cantidadAsignados = $miPerfilModulo->consultarPerfilAsignadoModulo();									
 					if( $cantidadAsignados )

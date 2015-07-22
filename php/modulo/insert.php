@@ -29,8 +29,8 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/perfil.png' class='img-responsive'>
-				<h2>ADMINISTRAR MÓDULO</h2>			
+				<image src='../../img/moduloNuevo.png' class='img-responsive'>
+				<h2>INSERTAR MÓDULO</h2>			
 				<?php $miModulo2->insertarModulo(); ?>
 			</div>			
 			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

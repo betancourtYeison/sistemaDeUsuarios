@@ -30,7 +30,7 @@
 			</div>	
 
 			<div class="page-header" align = "center">
-				<image src='../../img/modulo.png' class='img-responsive'>
+				<image src='../../img/estado.png' class='img-responsive'>
 				<h2>MODIFICAR ESTADO</h2>
 			</div>	
 			

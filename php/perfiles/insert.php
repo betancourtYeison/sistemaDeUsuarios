@@ -29,8 +29,8 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/usuario.png' class='img-responsive'>
-				<h2>MÓDULO PERFILES</h2>			
+				<image src='../../img/usuarioNuevo.png' class='img-responsive'>
+				<h2>INSERTAR PERFIL</h2>			
 				<?php $miPerfil2->insertarPerfil(); ?>
 			</div>			
 			<div id = "footer">

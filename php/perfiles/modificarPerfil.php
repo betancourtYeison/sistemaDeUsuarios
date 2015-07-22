@@ -30,8 +30,8 @@
 			</div>	
 
 			<div class="page-header" align = "center">
-				<image src='../../img/perfil.png' class='img-responsive'>
-				<h2>MÓDULO PERFILES</h2>			
+				<image src='../../img/usuarioEditar.png' class='img-responsive'>
+				<h2>MODIFICAR PERFIL</h2>			
 			</div>
 
 			<?php

@@ -32,8 +32,8 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/usuario.png' class='img-responsive'>
-				<h2>MÓDULO USUARIOS</h2>			
+				<image src='../../img/usuarioNuevo.png' class='img-responsive'>
+				<h2>INSERTAR USUARIO</h2>			
 				<?php $miUsuario2->insertarUsuario(); ?>
 			</div>			
 			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

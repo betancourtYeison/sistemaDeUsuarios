@@ -31,8 +31,8 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/perfil.png'>
-				<h2>MÓDULO PERFILES</h2>
+				<image src='../../img/perfilModulo.png'>
+				<h2>DESASIGNAR MÓDULO A PERFIL</h2>
 				<?php $miPerfil2->eliminarPerfilModulo( ); ?>
 			</div>			
 			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

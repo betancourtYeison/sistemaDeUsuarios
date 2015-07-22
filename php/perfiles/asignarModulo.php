@@ -28,8 +28,8 @@
 			</div>	
 
 			<div class="page-header" align = "center">
-				<image src='../../img/configuracion.png' class='img-responsive'>
-				<h2>MÓDULO PERFILES</h2>			
+				<image src='../../img/perfilModulo.png' class='img-responsive'>
+				<h2>MÓDULO DE ASIGNACIÓN</h2>			
 			</div>
 
 			<div align='center' class="col-lg-offset-3 col-md-offset-3">	

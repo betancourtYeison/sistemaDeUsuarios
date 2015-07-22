@@ -32,8 +32,8 @@
 			</div>	
 
 			<div class="page-header" align = "center">
-				<image src='../../img/perfil.png' class='img-responsive'>
-				<h2>ADMINISTRAR MÓDULO</h2>		
+				<image src='../../img/estado.png' class='img-responsive'>
+				<h2>INSERTAR ESTADO</h2>		
 				<?php $miEstado->insertarEstado(); ?>
 			</div>
 

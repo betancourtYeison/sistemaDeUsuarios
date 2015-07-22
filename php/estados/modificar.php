@@ -29,8 +29,8 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/modulo.png' class='img-responsive'>
-				<h2>MODIFICAR MÓDULO</h2>
+				<image src='../../img/estado.png' class='img-responsive'>
+				<h2>MODIFICAR ESTADO</h2>
 				<?php 
 					$miEstado->modificarEstado( $_POST['codigo'] ); 
 				?>

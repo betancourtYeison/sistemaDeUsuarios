@@ -31,8 +31,8 @@
 				?>	
 			</div>	
 			<div class="page-header" align = "center">
-				<image src='../../img/perfil.png'>
-				<h2>MÓDULO PERFILES</h2>
+				<image src='../../img/usuarioEliminado.png'>
+				<h2>ELIMINAR PERFIL</h2>
 				<?php $miPerfil2->eliminarPerfil( ); ?>
 			</div>			
 			<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
