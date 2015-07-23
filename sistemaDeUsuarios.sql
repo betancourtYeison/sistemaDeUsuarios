@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2015 a las 16:54:13
+-- Tiempo de generación: 23-07-2015 a las 05:57:57
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -64,7 +64,7 @@ INSERT INTO `estado` (`codigoestado`, `descripcion`, `tipo`) VALUES
 (5, 'DEVUELTO', 2),
 (6, 'ACTIVO', 3),
 (7, 'DADO DE BAJA', 3),
-(8, 'DAÑADO', 3),
+(8, 'DANADO', 3),
 (9, 'PRESTADO', 3);
 
 -- --------------------------------------------------------
@@ -86,11 +86,12 @@ CREATE TABLE IF NOT EXISTS `modulo` (
 
 INSERT INTO `modulo` (`codigomodulo`, `descripcion`, `ruta`, `tipo`) VALUES
 (1, 'USUARIOS', '../usuarios/usuarios.php', 1),
-(4, 'ASIGNAMODULOS', '../configuracion/asignarModulo.php', 2),
+(4, 'ASIGNAMODULOS', '../perfiles/asignarModulo.php', 2),
 (2, 'PERFIL', '../perfiles/perfiles.php', 3),
 (3, 'MODULOS', '../modulo/modulos.php', 1),
-(5, 'PRODUCTOS', '../productos/productos.php', 1),
-(6, 'COMPRAS', '../compras/compras.php', 1);
+(5, 'ESTADOS', '../estados/estados.php', 1),
+(6, 'PRODUCTOS', '../productos/productos.php', 1),
+(7, 'COMPRAS', '../compras/compras.php', 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `perfilmodulo` (
   `codigo` int(2) NOT NULL,
   `codigoperfil` int(2) NOT NULL,
   `codigomodulo` int(2) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfilmodulo`
@@ -135,6 +136,7 @@ INSERT INTO `perfilmodulo` (`codigo`, `codigoperfil`, `codigomodulo`) VALUES
 (7, 2, 3),
 (4, 1, 4),
 (8, 1, 5),
+(30, 1, 7),
 (22, 1, 6);
 
 -- --------------------------------------------------------
@@ -188,18 +190,19 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `correo` varchar(30) NOT NULL,
   `telefono` varchar(20) NOT NULL,
   `codigoestado` int(2) NOT NULL,
-  `pass` varchar(20) NOT NULL,
-  `codigoperfil` int(2) NOT NULL,
-  `deuda` int(10) NOT NULL
+  `pass` text NOT NULL,
+  `codigoperfil` int(2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`cedula`, `nombre`, `apellido`, `correo`, `telefono`, `codigoestado`, `pass`, `codigoperfil`, `deuda`) VALUES
-('1', 'Jorge', 'Castano', 'jorge@jorge.copm', '31553535626', 1, '1', 1, 0),
-('3', 'Yeison', 'Bentancourt', 'yeison@yeison.com', '12345', 1, '3', 2, 0);
+INSERT INTO `usuario` (`cedula`, `nombre`, `apellido`, `correo`, `telefono`, `codigoestado`, `pass`, `codigoperfil`) VALUES
+('1', 'Jorge', 'Castano', 'jorge@jorge.com', '31553535626', 1, '1', 1),
+('1115080936', 'Yeison', 'Betancourt Solis', 'yeisonbe10@hotmail.com', '3226132604', 1, '19931004', 1),
+('samuel02', 'samuel', 'samuelito', 'samu@gmail.com', '12345678', 1, 'samuel02', 2),
+('12345678', 'Juanito', 'Pelaez', 'juanito@mail.com', '12345678', 2, '12345678', 2);
 
 --
 -- Índices para tablas volcadas
@@ -271,7 +274,7 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `perfilmodulo`
 --
 ALTER TABLE `perfilmodulo`
-  MODIFY `codigo` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `codigo` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
