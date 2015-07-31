@@ -129,10 +129,7 @@
       				  	  		      <input type="text" class="form-control" id="tipo"
       				  	  		      		name="tipo" placeholder="tipo" required />
       				  	  		    </div>
-      				  	  	  	</div>	
-
-      				  	  	  	<h5>Tipo: 1 - ADMINISTRADOR, 2 - NORMAL, 3 - PRUEBA</h5>
-
+      				  	  	  	</div>	      				  	  	  
 				      		</div>
 						    <div class="modal-footer">
 						    	<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
