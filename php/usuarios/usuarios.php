@@ -75,7 +75,7 @@
 
 			<?php 
 				if ($datosMiPerfil[2] == '1') {
-					echo "<div align='center' class='col-lg-12 col-md-12 col-sm-12 col-xs-12''>				
+					echo "<div align='center' class='class='col-lg-12 col-md-12 col-sm-12 col-xs-12''>								
 							<!-- Button trigger modal -->
 							<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#myModal'>
 								NUEVO
@@ -84,7 +84,7 @@
 				}
 			 ?>
 			
-				<div class="panel-body">
+			<div class="panel-body">
 				<div class="table-responsive">
 					<table align = "center" cellpadding = "10px" class = "table table-striped table-hover">				
 						<tr align = "center">						

@@ -92,7 +92,6 @@
 					$estado = $miUsuario2 -> getEstado();
 					$pass = $miUsuario2 -> getPass();
 					$perfil = $miUsuario2 -> getPerfil();
-					$datosMiPerfil = $miPerfil->consultarUnPerfil($perfil);
 				
 				}					
 				else
@@ -225,13 +224,11 @@
 							            name='pass2' value='".$pass."' placeholder='******' required minlength=6/>
 							    </div>
 							</div>";
-						}
+						}				
 
-						
-
-						$perfiles = $miPerfil -> consultarPerfiles( );
+						$perfiles = $miPerfil -> consultarPerfiles( );											
 		    			
-		    			if(($datosMiPerfil[2] == '1') && ($miUsuario -> getCedula() != $cedula)){
+		    			if(($miUsuario -> getPerfil() == '1') && ($miUsuario -> getCedula() != $cedula)){
 		    				echo 
 							"<div class='form-group'>
 			    				<label for='perfil' class='col-sm-2 control-label'>Perfil:</label>
