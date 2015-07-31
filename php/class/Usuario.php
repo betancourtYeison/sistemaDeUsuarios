@@ -153,7 +153,7 @@
 		function consultarUsuarios( )
 		{
 			$query = "SELECT usuario.cedula, usuario.nombre, usuario.apellido, usuario.correo, usuario.telefono, estado.descripcion,
-			perfil.descripcion
+			perfil.descripcion, perfil.tipo
 			FROM usuario, estado, perfil
 			WHERE usuario.codigoestado=estado.codigoestado
 			AND usuario.codigoperfil=perfil.codigoperfil";

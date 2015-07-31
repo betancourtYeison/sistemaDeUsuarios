@@ -1,5 +1,9 @@
 <?php
 	include("../lib/session.php");
+
+	$miPerfil = new Perfil("","", "");
+	$miPerfil -> setConexion( $conexion );	
+	
 ?>
 <html>
 
@@ -87,7 +91,9 @@
 					$telefono = $miUsuario2 -> getTelefono();
 					$estado = $miUsuario2 -> getEstado();
 					$pass = $miUsuario2 -> getPass();
-					$perfil = $miUsuario2 -> getPerfil();				
+					$perfil = $miUsuario2 -> getPerfil();
+					$datosMiPerfil = $miPerfil->consultarUnPerfil($perfil);
+				
 				}					
 				else
 				{
@@ -179,31 +185,53 @@
 						echo 
 						"		</select>
 						    </div>
-			  			</div>";					  				  
-					?>
-								
-				  	<div class="form-group">
-					    <label for="password" class="col-sm-2 control-label">Contraseña:</label>
-					    <div class="col-sm-4">
-					      	<input type="password" class="form-control" id="password"
-								name="pass" value='<?php echo $pass; ?>' placeholder="******" required minlength=6/>
-					    </div>
-					</div>
+			  			</div>";					  				
 
-				  	<div class="form-group">
-					    <label for="re-password" class="col-sm-2 control-label">Repetir Contraseña:</label>
-					    <div class="col-sm-4">					    	
-					      	<input type="password" class="form-control" id="re-password"
-					            name="pass2" value='<?php echo $pass; ?>' placeholder="******" required minlength=6/>
-					    </div>
-					</div>
+						if ($miUsuario->getPerfil() == "3"){
+							echo"
+							<div class='form-group'>
+							    <label for='password' class='col-sm-2 control-label'>Contraseña:</label>
+							    <div class='col-sm-4'>
+							      	<input type='password' readonly='readonly' class='form-control' id='password'
+										name='pass' value='".$pass."' placeholder='******' required minlength=6/>
+							    </div>
+							</div>
 
-					<?php
-						$miPerfil = new Perfil("","");
-						$miPerfil -> setConexion( $conexion );	
-						$perfiles = $miPerfil -> consultarPerfiles( );	
+							
+						  	<div class='form-group'>
+							    <label for='re-password' class='col-sm-2 control-label'>Repetir Contraseña:</label>
+							    <div class='col-sm-4'>					    	
+							      	<input type='password' readonly='readonly' class='form-control' id='re-password'
+							            name='pass2' value='".$pass."' placeholder='******' required minlength=6/>
+							    </div>
+							</div> ";
+
+						}else{
+
+							echo"
+							<div class='form-group'>
+							    <label for='password' class='col-sm-2 control-label'>Contraseña:</label>
+							    <div class='col-sm-4'>
+							      	<input type='password'  class='form-control' id='password'
+										name='pass' value='".$pass."' placeholder='******' required minlength=6/>
+							    </div>
+							</div>
+
+							
+						  	<div class='form-group'>
+							    <label for='re-password' class='col-sm-2 control-label'>Repetir Contraseña:</label>
+							    <div class='col-sm-4'>					    	
+							      	<input type='password' class='form-control' id='re-password'
+							            name='pass2' value='".$pass."' placeholder='******' required minlength=6/>
+							    </div>
+							</div>";
+						}
+
+						
+
+						$perfiles = $miPerfil -> consultarPerfiles( );
 		    			
-		    			if(($miUsuario -> getPerfil() == '1') && ($miUsuario -> getCedula() != $cedula)){
+		    			if(($datosMiPerfil[2] == '1') && ($miUsuario -> getCedula() != $cedula)){
 		    				echo 
 							"<div class='form-group'>
 			    				<label for='perfil' class='col-sm-2 control-label'>Perfil:</label>
@@ -254,3 +282,5 @@
 	</body>
 	
 </html>
+
+

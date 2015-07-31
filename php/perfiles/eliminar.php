@@ -2,7 +2,7 @@
 	include("../lib/session.php");
 	
 	$miVariable =  $_GET['perfil'];				 
-	$miPerfil2 = new Perfil( $miVariable, "" );								
+	$miPerfil2 = new Perfil( $miVariable, "", "" );								
 	$miPerfil2->setConexion( $conexion );
 	$filaUsuario2 = $miPerfil2 -> consultarUnPerfil( $miVariable );											
 ?>

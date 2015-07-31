@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.4.3
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 23-07-2015 a las 05:57:57
+-- Servidor: localhost
+-- Tiempo de generación: 31-07-2015 a las 22:19:06
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `sistemadeusuarios`
+-- Base de datos: `sistemaDeUsuarios`
 --
 
 -- --------------------------------------------------------
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `estado` (
   `codigoestado` int(3) NOT NULL,
   `descripcion` varchar(30) NOT NULL,
   `tipo` int(3) NOT NULL COMMENT '1-estados usuarios, 2-estado de prestamos, 3-estados de recurso'
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2100 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `estado`
@@ -64,8 +64,9 @@ INSERT INTO `estado` (`codigoestado`, `descripcion`, `tipo`) VALUES
 (5, 'DEVUELTO', 2),
 (6, 'ACTIVO', 3),
 (7, 'DADO DE BAJA', 3),
-(8, 'DANADO', 3),
-(9, 'PRESTADO', 3);
+(8, 'DAÑADO', 3),
+(9, 'PRESTADO', 3),
+(10, 'ELIMINADO', 2);
 
 -- --------------------------------------------------------
 
@@ -89,9 +90,9 @@ INSERT INTO `modulo` (`codigomodulo`, `descripcion`, `ruta`, `tipo`) VALUES
 (4, 'ASIGNAMODULOS', '../perfiles/asignarModulo.php', 2),
 (2, 'PERFIL', '../perfiles/perfiles.php', 3),
 (3, 'MODULOS', '../modulo/modulos.php', 1),
-(5, 'ESTADOS', '../estados/estados.php', 1),
-(6, 'PRODUCTOS', '../productos/productos.php', 1),
-(7, 'COMPRAS', '../compras/compras.php', 1);
+(5, 'PRODUCTOS', '../productos/productos.php', 1),
+(6, 'COMPRAS', '../compras/compras.php', 1),
+(7, 'ESTADOS', '../estados/estados.php', 1);
 
 -- --------------------------------------------------------
 
@@ -101,16 +102,18 @@ INSERT INTO `modulo` (`codigomodulo`, `descripcion`, `ruta`, `tipo`) VALUES
 
 CREATE TABLE IF NOT EXISTS `perfil` (
   `codigoperfil` int(2) NOT NULL,
-  `descripcion` varchar(20) NOT NULL
+  `descripcion` varchar(20) NOT NULL,
+  `tipo` int(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfil`
 --
 
-INSERT INTO `perfil` (`codigoperfil`, `descripcion`) VALUES
-(1, 'ADMINISTRADOR'),
-(2, 'NORMAL');
+INSERT INTO `perfil` (`codigoperfil`, `descripcion`, `tipo`) VALUES
+(1, 'ADMINISTRADOR', 1),
+(2, 'NORMAL', 2),
+(3, 'PRUEBA', 3);
 
 -- --------------------------------------------------------
 
@@ -122,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `perfilmodulo` (
   `codigo` int(2) NOT NULL,
   `codigoperfil` int(2) NOT NULL,
   `codigomodulo` int(2) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfilmodulo`
@@ -135,9 +138,23 @@ INSERT INTO `perfilmodulo` (`codigo`, `codigoperfil`, `codigomodulo`) VALUES
 (6, 2, 1),
 (7, 2, 3),
 (4, 1, 4),
-(8, 1, 5),
-(30, 1, 7),
-(22, 1, 6);
+(23, 1, 5),
+(22, 1, 6),
+(24, 1, 7),
+(26, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `privilegios`
+--
+
+CREATE TABLE IF NOT EXISTS `privilegios` (
+  `crear` int(1) NOT NULL DEFAULT '0',
+  `modificar` int(1) NOT NULL DEFAULT '0',
+  `eliminar` int(1) NOT NULL DEFAULT '0',
+  `cedula_Usuario` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -190,19 +207,19 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `correo` varchar(30) NOT NULL,
   `telefono` varchar(20) NOT NULL,
   `codigoestado` int(2) NOT NULL,
-  `pass` text NOT NULL,
-  `codigoperfil` int(2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `pass` varchar(20) NOT NULL,
+  `codigoperfil` int(2) NOT NULL,
+  `deuda` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`cedula`, `nombre`, `apellido`, `correo`, `telefono`, `codigoestado`, `pass`, `codigoperfil`) VALUES
-('1', 'Jorge', 'Castano', 'jorge@jorge.com', '31553535626', 1, '1', 1),
-('1115080936', 'Yeison', 'Betancourt Solis', 'yeisonbe10@hotmail.com', '3226132604', 1, '19931004', 1),
-('samuel02', 'samuel', 'samuelito', 'samu@gmail.com', '12345678', 1, 'samuel02', 2),
-('12345678', 'Juanito', 'Pelaez', 'juanito@mail.com', '12345678', 2, '12345678', 2);
+INSERT INTO `usuario` (`cedula`, `nombre`, `apellido`, `correo`, `telefono`, `codigoestado`, `pass`, `codigoperfil`, `deuda`) VALUES
+('123', 'Jorge', 'Castano', 'jorge@jorge.copm', '31553535626', 1, 'jorgec', 1, 0),
+('12345678', 'prueba', 'prueba', 'prueba@correo.com', '1342123', 1, 'prueba1', 3, 0),
+('3', 'Yeison', 'Bentancourt', 'yeison@yeison.com', '12345', 1, '123123', 2, 0);
 
 --
 -- Índices para tablas volcadas
@@ -239,6 +256,12 @@ ALTER TABLE `perfilmodulo`
   ADD PRIMARY KEY (`codigo`);
 
 --
+-- Indices de la tabla `privilegios`
+--
+ALTER TABLE `privilegios`
+  ADD PRIMARY KEY (`cedula_Usuario`);
+
+--
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
@@ -248,7 +271,8 @@ ALTER TABLE `producto`
 -- Indices de la tabla `producto_compra`
 --
 ALTER TABLE `producto_compra`
-  ADD PRIMARY KEY (`codigo_compra`,`codigo_producto`), ADD KEY `codigo_producto` (`codigo_producto`);
+  ADD PRIMARY KEY (`codigo_compra`,`codigo_producto`),
+  ADD KEY `codigo_producto` (`codigo_producto`);
 
 --
 -- Indices de la tabla `usuario`
@@ -269,12 +293,22 @@ ALTER TABLE `compra`
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-  MODIFY `codigoestado` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `codigoestado` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2100;
 --
 -- AUTO_INCREMENT de la tabla `perfilmodulo`
 --
 ALTER TABLE `perfilmodulo`
-  MODIFY `codigo` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `codigo` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `privilegios`
+--
+ALTER TABLE `privilegios`
+  ADD CONSTRAINT `privilegios_ibfk_1` FOREIGN KEY (`cedula_Usuario`) REFERENCES `usuario` (`cedula`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

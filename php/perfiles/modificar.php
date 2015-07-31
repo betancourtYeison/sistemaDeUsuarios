@@ -1,7 +1,7 @@
 <?php
 	include("../lib/session.php");	
 	
-	$miPerfil2 = new Perfil( $_POST['codigo'], $_POST['descripcion'] );								
+	$miPerfil2 = new Perfil( $_POST['codigo'], $_POST['descripcion'], $_POST['tipo'] );								
 	$miPerfil2->setConexion( $conexion );		
 ?>
 

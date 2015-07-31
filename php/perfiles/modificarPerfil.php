@@ -38,26 +38,30 @@
 				if( isset( $_GET['perfil'] ) )
 				{
 					$miVariable =  $_GET['perfil'];				 
-					$miPerfil = new Perfil( $miVariable, "" );	
+					$miPerfil = new Perfil( $miVariable, "", "" );	
 					$miPerfil -> setConexion( $conexion );	
 					$filaUsuario2 = $miPerfil -> consultarUnPerfil( $miVariable );	
 					$miPerfil -> setCodigo( $filaUsuario2['0'] );					
 					$miPerfil -> setDescripcion( $filaUsuario2['1'] );							
-								
+					$miPerfil -> setTipo($filaUsuario2['2']);
+
 					$codigo = $miPerfil -> getCod();					
-					$descripcion = $miPerfil -> getDescripcion();													
+					$descripcion = $miPerfil -> getDescripcion();
+					$tipo = $miPerfil -> getTipo();													
 				}					
 				else
 				{
 					$codigo = '';
-					$descripcion = '';										
+					$descripcion = '';
+					$tipo = '';										
 				}
+
 			?>
 
 			<div align='center' class="col-lg-offset-3 col-md-offset-3">	
 				<form class="form-horizontal" role="form" action="modificar.php" method="post">
 			  	  	<div class="form-group">
-			  	    	<label for="codigo" class="col-sm-2 control-label">Codigo:</label>
+			  	    	<label for="codigo" class="col-sm-2 control-label">Codigo: </label>
 			  	    	<div class="col-sm-4">
 			  	      		<input type="text" class="form-control" id="codigo" 
 			  		      		name="codigo" value='<?php echo $codigo; ?>' placeholder="id" required minlength=1/>
@@ -65,10 +69,18 @@
 			  	  	</div>
 
 		  	  	  	<div class="form-group">
-		  	  		    <label for="descripcion" class="col-sm-2 control-label">Descripción:</label>
+		  	  		    <label for="descripcion" class="col-sm-2 control-label">Descripción :</label>
 		  	  		    <div class="col-sm-4">
 		  	  		      <input type="text" class="form-control" id="descripcion"
 		  	  		      		name="descripcion" value='<?php echo $descripcion; ?>' placeholder="descripción" required minlength=4/>
+		  	  		    </div>
+		  	  	  	</div>	
+
+		  	  	  	<div class="form-group">
+		  	  		    <label for="tipo" class="col-sm-2 control-label">Tipo :</label>
+		  	  		    <div class="col-sm-4">
+		  	  		      <input type="text" class="form-control" id="tipo"
+		  	  		      		name="tipo" value='<?php echo $tipo; ?>' placeholder="tipo" />
 		  	  		    </div>
 		  	  	  	</div>						
 

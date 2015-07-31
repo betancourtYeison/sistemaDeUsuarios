@@ -46,11 +46,12 @@
 						<tr align = "center">						
 							<th>CÓDIGO</th> 					 
 							<th>DESCRIPCIÓN</th>
+							<th>TIPO</th>
 							<th style="width:20px;"> </th>
 							<th style="width:20px;"> </th>				 																									
 						</tr>						
 						<?php
-							$objetoPerfil = new Perfil( "", "" );
+							$objetoPerfil = new Perfil( "", "", "" );
 							$objetoPerfil->setConexion( $conexion );
 							$perfiles = $objetoPerfil -> consultarPerfiles();
 							$cedula = $miUsuario -> getCedula();
@@ -70,6 +71,7 @@
 								"<tr>
 									<td>$perfil[0]</td>
 									<td>$perfil[1]</td>
+									<td>$perfil[2]</td>
 									<td><a href='modificarPerfil.php?perfil=$perfil[0]'><button type='button' class='btn btn-primary'>MODIFICAR</button></a></td>
 									<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#modalPerfil$perfil[0]'>ELIMINAR</button></td>
 								</tr>";
@@ -119,7 +121,18 @@
       				  	  		      <input type="text" class="form-control" id="descripcion"
       				  	  		      		name="descripcion" placeholder="descripción" required minlength=4/>
       				  	  		    </div>
-      				  	  	  	</div>					
+      				  	  	  	</div>	
+
+      				  	  	  	<div class="form-group">
+      				  	  		    <label for="tipo" class="col-sm-4 control-label">Tipo :</label>
+      				  	  		    <div class="col-sm-6">
+      				  	  		      <input type="text" class="form-control" id="tipo"
+      				  	  		      		name="tipo" placeholder="tipo" required />
+      				  	  		    </div>
+      				  	  	  	</div>	
+
+      				  	  	  	<h5>Tipo: 1 - ADMINISTRADOR, 2 - NORMAL, 3 - PRUEBA</h5>
+
 				      		</div>
 						    <div class="modal-footer">
 						    	<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>

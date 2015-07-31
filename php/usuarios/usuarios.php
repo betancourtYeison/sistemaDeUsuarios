@@ -1,5 +1,13 @@
 <?php	
 	include("../lib/session.php");
+
+	$usuarios = $miUsuario -> consultarUsuarios();							
+	$cedula = $miUsuario -> getCedula();
+	$perfil = $miUsuario -> getPerfil();
+	$miPerfil = new Perfil("","","");
+	$miPerfil -> setConexion( $conexion );
+	$datosMiPerfil = $miPerfil->consultarUnPerfil($perfil);
+
 ?>
 <html>	
 	<head>
@@ -64,15 +72,19 @@
 				<image src='../../img/usuario.png' class='img-responsive'>
 				<h2>MÓDULO USUARIOS</h2>			
 			</div>
-	
-			<div align="center" class="class="col-lg-12 col-md-12 col-sm-12 col-xs-12"">				
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-					NUEVO
-				</button>							
-			</div>	
 
-			<div class="panel-body">
+			<?php 
+				if ($datosMiPerfil[2] == '1') {
+					echo "<div align='center' class='col-lg-12 col-md-12 col-sm-12 col-xs-12''>				
+							<!-- Button trigger modal -->
+							<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#myModal'>
+								NUEVO
+							</button>							
+						</div>";
+				}
+			 ?>
+			
+				<div class="panel-body">
 				<div class="table-responsive">
 					<table align = "center" cellpadding = "10px" class = "table table-striped table-hover">				
 						<tr align = "center">						
@@ -87,17 +99,6 @@
         					<th style="width:20px;"> </th>				
 						</tr>						
 						<?php
-							$usuarios = $miUsuario -> consultarUsuarios();							
-							$cedula = $miUsuario -> getCedula();
-							$perfil = $miUsuario -> getPerfil();
-							$miPerfil;
-
-							if($perfil == 1){
-								$miPerfil = "ADMINISTRADOR";
-							}else{
-								$miPerfil = "NORMAL";
-							}
-
 							if( $usuarios )
 							foreach( $usuarios as $usuario )
 							{
@@ -111,13 +112,13 @@
 									<td>$usuario[5]</td>
 									<td>$usuario[6]</td>	
 									";
-									if($miPerfil == "ADMINISTRADOR"){
+									if($datosMiPerfil[2] == "1"){
 										echo
 										"
 											<td><a href='modificarUsuario.php?cedula=$usuario[0]'><button type='button' class='btn btn-primary'>MODIFICAR</button></a></td>
 										";
 									}else{
-										if($cedula == $usuario[0] && $miPerfil == $usuario[6]){
+										if($cedula == $usuario[0] && $datosMiPerfil[1] == $usuario[6]){
 											echo
 											"
 												<td><a href='modificarUsuario.php?cedula=$usuario[0]'><button type='button' class='btn btn-primary'>MODIFICAR</button></a></td>
@@ -130,17 +131,24 @@
 										}
 									}
 
-									if((($miUsuario -> getCedula()) == $usuario[0]) || $miPerfil == "NORMAL"){
-										echo
-										"
-											<td><button type='button' class='hide btn btn-danger' data-toggle='modal' data-target='#modalUsuario$usuario[0]'>ELIMINAR</button></td>
-										";
+									if($datosMiPerfil[2] == "1"){
+										 if ($cedula == $usuario[0] && $datosMiPerfil[1] == $usuario[6]){
+											echo
+											"
+												<td><button type='button' class='hide btn btn-danger' data-toggle='modal' data-target='#modalUsuario$usuario[0]'>ELIMINAR</button></td>
+											";
+										}else{
+											echo
+											"
+												<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#modalUsuario$usuario[0]'>ELIMINAR</button></td>
+											";										
+										}
 									}else{
 										echo
-										"
-											<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#modalUsuario$usuario[0]'>ELIMINAR</button></td>
-										";										
-									}
+											"
+												<td><button type='button' class='hide btn btn-danger' data-toggle='modal' data-target='#modalUsuario$usuario[0]'>ELIMINAR</button></td>
+											";	
+									}	
 									echo
 									"<div align='center' class='modal fade bs-example-modal-smm' id='modalUsuario$usuario[0]' tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel'>
 									  	<div class='modal-dialog modal-sm'>
@@ -255,30 +263,44 @@
 								    </div>
 								</div>
 
-								<div class="form-group">
-							    	<label for="perfil" class="col-sm-4 control-label">Perfil:</label>
-								    <div class="col-sm-6">				    
-								      	<select class="form-control" id="perfil" name='perfil'>
-											<?php
-												$miPerfil = new Perfil("","");
-												$miPerfil -> setConexion( $conexion );	
-												$perfiles = $miPerfil -> consultarPerfiles( );						
-												if( $perfiles )
-												foreach( $perfiles as $perfil2 )
-												{
-													if( $perfil == $perfil2[0] )
-													{
-														echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
-													}
-													else
-													{
-														echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
-													}
-												}								
-											?>
-										</select>
-								    </div>
-							  	</div>					
+									<?php
+											
+										$perfiles = $miPerfil -> consultarPerfiles( );	
+
+
+
+						    			if($datosMiPerfil[2] == '1'){
+						    				echo 
+											"<div class='form-group'>
+							    				<label for='perfil' class='col-sm-4 control-label'>Perfil:</label>
+								    			<div class='col-sm-6'>						    	
+								      				<select class='form-control' id='perfil' name='perfil'>";	
+						    			}else{
+						    				echo 
+											"<div class='hide form-group'>
+							    				<label for='perfil' class='col-sm-4 control-label'>Perfil:</label>
+								    			<div class='col-sm-6'>						    	
+								      				<select class='form-control' id='perfil' name='perfil'>";	
+						    			}
+
+										if( $perfiles )
+										foreach( $perfiles as $perfil2 )
+										{							
+											if( $perfil == $perfil2[0] )
+											{
+												echo "<option value='$perfil2[0]' selected>$perfil2[1]</option>";		
+											}
+											else
+											{
+												echo "<option value='$perfil2[0]'>$perfil2[1]</option>";							
+											}
+										}
+										
+										echo 	"</select>
+									   		</div>
+								  		</div>";								
+									?>							
+					
 				      		</div>
 						    <div class="modal-footer">
 						    	<button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>

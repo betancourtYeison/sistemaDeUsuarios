@@ -114,7 +114,7 @@
 						  	  	  	</div>
 
 						  	  	<div class="form-group">
-						  		    <label for="type" class="col-sm-4 control-label">Tipo:</label>
+						  		    <label for="type" class="col-sm-4 control-label">Dañado:</label>
 						  		    <div class="col-sm-6">
 						  		      <input type="text" class="form-control" id="type"
 						  		            name="tipo" placeholder="tipo" required/>

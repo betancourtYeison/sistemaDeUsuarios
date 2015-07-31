@@ -2,13 +2,15 @@
 	class Perfil
 	{	
 		private $codigo;
-		private $descripcion;			
+		private $descripcion;
+		private $tipo;			
 		var $conexion;
 				
-		function Perfil( $codigo,  $descripcion )
+		function Perfil( $codigo,  $descripcion, $tipo )
 		{
 			$this->codigo = $codigo;
-			$this->descripcion = $descripcion;			
+			$this->descripcion = $descripcion;	
+			$this->tipo = $tipo;		
 		}		
 		
 		function getCod()
@@ -31,6 +33,16 @@
 			$this->descripcion = $descripcion;
 		}		
 		
+		function getTipo()
+		{
+			return $this->tipo;
+		}
+		
+		function setTipo($tipo)
+		{
+		 	$this->tipo = $tipo;
+		}
+
 		function setConexion ( $conexion )
 		{
 			$this -> conexion = $conexion;
@@ -38,8 +50,8 @@
 		
 		function insertarPerfil(  )
 		{			
-			$query = "insert into perfil( codigoperfil, descripcion )
-			values( '$this->codigo', '$this->descripcion' )";			
+			$query = "insert into perfil( codigoperfil, descripcion, tipo )
+			values( '$this->codigo', '$this->descripcion', '$this->tipo' )";			
 			
 			$this -> conexion -> conectar();
 			$this -> conexion -> ejecutarRegistro( $query );
@@ -48,7 +60,7 @@
 		
 		function modificarPerfil()
 		{
-			$query = "UPDATE perfil SET descripcion = '$this->descripcion' WHERE codigoperfil = '$this->codigo'";	
+			$query = "UPDATE perfil SET descripcion = '$this->descripcion', tipo = '$this->tipo' WHERE codigoperfil = '$this->codigo'";	
 			
 			$this -> conexion -> conectar();
 			$this -> conexion -> ejecutarRegistro( $query );
